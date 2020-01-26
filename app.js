@@ -1,14 +1,16 @@
 var express = require('express');
 var exphbs  = require('express3-handlebars');
 var path = require('path');
+var moment = require('moment');
 var bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var mongoDB = require('./expressMongoDB');
+var helper = require('./helper');
 var app = express();
 var Guess = require('./guess-add.js');
  
-app.engine('hbs', exphbs({extname: '.hbs', defaultLayout: false, layoutsDir:'views'}));
 app.set('view engine', 'hbs');
+app.engine('hbs', helper.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.use('/assets', express.static(path.join(__dirname, 'dist')))
 
@@ -60,19 +62,86 @@ app.post('/guess-add', urlencodedParser, function (req, res) {
    var newGuess = new Guess({
         homeTeam: req.body.homeTeam,
         guestTeam: req.body.guestTeam,
-        gameDate: req.body.gameDate,
+        gameDate: moment(req.body.gameDate).format('DD MMMM'),
         gameStatus: req.body.gender,
         gameHour: req.body.gameHour,
         gameGuess: req.body.gameGuess,
         gameCoefficient: req.body.gameCoefficient
     });
+
     newGuess.save((err) => {
+        if(!err) {
+            return res.redirect('/guess')
+        } else {
+            console.log(err);
+            res.render('guess-add');
+        }
+    }) 
+});
+
+
+app.get('/guess/delete/:id', function(req,res) {
+    const id = req.params.id
+    //Find By Id
+    Guess.findOneAndRemove({_id: id}, (err, data) => {
+        if(!err) {
+            return res.redirect('/guess')
+        } else {
+            console.log(err)
+            return res.redirect('/guess')
+        }
+    });
+});
+
+app.get('/guess/edit/:id', function(req,res) {
+    const id = req.params.id
+    //Find By Id
+    Guess.findById({_id: id}, (err, data) => {
+        if(!err) {
+           return res.render('guess-add', {data: data});
+        } else {
+            console.log(err)
+            return res.redirect('/guess')
+        }
+    });
+});
+
+app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
+    const id = req.params.id
+    //Find By Id
+    Guess.findOneAndUpdate({_id: id}, {
+        homeTeam: req.body.homeTeam,
+        guestTeam: req.body.guestTeam,
+        gameDate: moment(req.body.gameDate).format('DD MMMM'),
+        gameStatus: req.body.gender,
+        gameHour: req.body.gameHour,
+        gameGuess: req.body.gameGuess,
+        gameCoefficient: req.body.gameCoefficient
+    }, (err, data) => {
+        if(!err) {
+            return res.redirect('/guess')
+        } else {
+            console.log(err)
+            return res.redirect('/guess')
+        }
+    });
+});
+
+app.get('/api', (req,res) => {
+    Guess.find({}, null, {sort: {gameStatus: 0}}, (err,data) => {
         if(err) {
             throw err;
         }
-    });
-
-    res.render('guess-add');
+        res.json(data);
+    })
 });
+
+app.get('/settings', (req,res) => {
+    res.json({
+        "myBanner": false,
+        "admobBanner": false,
+        "bannerLink": "https://miro.medium.com/max/640/1*uyZqUA7yQuJYrHtuDv49Rw.jpeg"
+    });
+})
  
 app.listen(process.env.PORT || 4949);

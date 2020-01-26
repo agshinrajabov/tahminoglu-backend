@@ -1,0 +1,100 @@
+.notification{
+    margin-top: 8px;
+    width: 50%;
+    border: 1px solid rgba($color: $color-blue, $alpha: .7);
+    @include device(phone){
+       width: 100%;
+        
+    }
+    .notification-title{
+        background-color: $color-blue;
+        color: $color-white;
+        padding: 6px 8px;
+        font-size: .9rem;
+        font-weight: bold;
+
+        @include device(phone){
+            background-color: $color-blue;
+            color: $color-white;
+            padding: 8px 1.1rem;
+            font-size: .8rem;
+            font-weight: bold;
+        }
+    }
+
+    .notification-form{
+        padding: 1rem 8px;
+
+        form, label, input{
+            display: block;
+            @include device(phone) {
+                width: 100% !important;
+            }
+            textarea{
+                display: block;
+                outline: none;
+                background-color: $color-blue;
+                color: $color-white;
+                padding: 9px 7px;
+                resize: none;
+
+                @include device(phone){
+                    width: 100% !important;
+                    box-sizing: border-box;
+                }
+            }
+            ::placeholder{
+                color: rgba($color: #fff, $alpha: .5);
+
+                @include device(phone){
+                    font-size: 11px;
+                }
+                
+            }
+
+            label{
+                font-size: .8rem;
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
+
+            input{
+                width: 50%;
+                box-sizing: border-box;
+                outline: none;
+                padding: 9px 7px;
+                margin-top: 5px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                background-color: $color-blue;
+                color: $color-white;
+                
+                @include device(phone){
+                    box-sizing: border-box;
+                    outline: none;
+                    padding: .8rem 7px;
+                    margin-top: 5px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: $color-blue;
+                    color: $color-white;
+                }
+            }
+
+            input[type=submit]{
+                width: unset;
+                margin-top: 1rem;
+                padding: 8px 9px;
+                font-weight: bold;
+                outline: none;
+                cursor: pointer;
+                @include device(phone) {
+                    height: 2rem;
+                    width: 6rem !important;
+                    background-color: $color-blue !important;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}

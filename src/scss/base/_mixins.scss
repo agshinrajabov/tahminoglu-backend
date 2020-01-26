@@ -1,0 +1,42 @@
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+@mixin center {
+    width: 90%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+@mixin center2 {
+    width: 98%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+@mixin device($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 37.5rem) {  @content }; //600px
+    }
+
+    @if $breakpoint == tab-port {
+        @media (max-width: 56.2rem) {  @content }; //900px
+    }
+
+    @if $breakpoint == tab-land {
+        @media (max-width: 75rem) {  @content }; //1200px
+    }
+
+    @if $breakpoint == desktop {
+        @media (max-width: 112.5rem) {  @content }; //1800px
+    }
+
+}
+
+@function rh($bir) {
+    @return $bir * 10;
+}

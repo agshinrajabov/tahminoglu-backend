@@ -1,0 +1,118 @@
+.post-content{
+    margin-top: 1rem;
+
+    .post-content-title{
+        font-size: .9rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+}
+
+.table-title{
+    font-size: 1rem;
+    margin: .8rem 0;
+    font-weight: bold;
+}
+
+.post-content-list{
+
+    @include device(phone){
+        margin-bottom: 1rem !important;
+    }
+
+    .post-table{
+        width: 100%;
+        margin: 1rem 0;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+        font-size: .9rem;
+        box-shadow: 0 0 20px rgba(0, 0, 0, .15);
+
+        @include device(phone){
+            width: 100%;
+            margin: 0 !important;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            font-size: .7rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, .15);
+        }
+
+        tbody tr td:nth-child(1) a{
+            display: inline-block;
+            font-weight: bold;
+            text-align: center;
+            color: #0984e3;
+            transition: all .3s ease;
+            text-decoration: none;
+
+            @include device(phone){
+                display: inline-block;
+                font-weight: bold;
+                text-align: center;
+                font-size: 13px;
+                color: #0984e3;
+                text-decoration: none;
+            }
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+
+
+        tbody tr td:nth-child(5) a{
+            border-radius: 5px;
+            display: inline-block;
+            padding: 1px 6px;
+            font-weight: bold;
+            background-color: red;
+            text-align: center;
+            color: $color-white;
+            transition: all .3s ease;
+            text-decoration: none;
+
+            @include device(phone){
+                border-radius: 5px;
+                display: inline-block;
+                padding: 2px 8px;
+                font-weight: bold;
+                background-color: red;
+                text-align: center;
+                color: $color-white;
+                text-decoration: none;
+            }
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+
+        tbody{
+            tr{
+                transition: all .3s ease;
+                &:hover{
+                    background-color: rgba($color: #adadad, $alpha: .2);
+                }
+            }
+        }
+
+        thead tr{
+            background-color: $color-blue;
+            color: $color-white;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        th, td{
+            padding: .9rem;
+            text-align: center;
+            border: 1px solid rgba($color: #ccc, $alpha: .5);
+
+            @include device(phone){
+                padding: .7rem;
+                font-weight: bold;
+                text-align: center;
+                border: 1px solid rgba($color: #ccc, $alpha: .5);
+            }
+        }
+    }
+}
+

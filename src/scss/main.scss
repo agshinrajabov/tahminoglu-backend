@@ -1,0 +1,22 @@
+//BASE
+@import "base/mixins";
+@import "base/variables";
+
+//Fonts 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+
+//Icon
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css');
+
+// PAGES
+@import "pages/home";
+@import "pages/login";
+@import "pages/tahmin";
+@import "pages/tahmin_add";
+@import "pages/notification";
+
+
+
+
+
+

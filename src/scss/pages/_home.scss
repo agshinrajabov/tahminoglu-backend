@@ -1,0 +1,240 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+}
+
+header{
+    background-color: $color-blue;
+
+    .container{
+        @include center;
+
+        .header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 3rem;
+
+            @include device(phone) {
+                 height: 3rem;
+            }
+    
+            .logo{
+                a{
+                    font-size: 1.2rem;
+                    color: $color-white;
+                    font-weight: bold;
+                    text-decoration: none;
+
+                    @include device(phone) {
+                        font-size: 1rem;
+                    }
+                }
+                
+            }
+    
+            .log-out{
+                a{
+                    text-decoration: none;
+                    cursor: pointer;
+                    color: rgba($color: #fff, $alpha: .7);
+                    font-size: 1rem;
+                    transition: all .2s;
+
+                    @include device(phone) {
+                        font-size: .9rem;
+                    }
+    
+                &:hover{
+                    color: $color-white;
+                }
+    
+                    i{
+                        margin-left: 10px;
+                        font-size: .9rem;
+                    }
+                }
+            }
+    
+        }
+    }
+}
+
+.wrapper{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-areas: 
+        "myAside mySection mySection mySection"
+        "myAside mySection mySection mySection";
+
+        @include device(phone) {
+            grid-template-areas: 
+            "myAside myAside myAside myAside"
+            "mySection mySection mySection mySection";
+            grid-template-rows: 1fr 6fr;
+
+        }
+
+
+
+    aside {
+        background-color: rgba($color: $color-blue, $alpha: .9);
+        grid-area: myAside;
+        height: 100%;
+        .menu{
+            margin-top: 1rem;
+
+            @include device(phone){
+                margin: .5rem 0;
+                
+            }
+
+            ul{
+                margin: 0;
+                padding: 0;
+                li{
+                    list-style-type: none;
+                    transition: all .3s ease;
+
+                    &:hover{
+                        background-color: rgba($color: $color-white, $alpha: .1);
+                        a{
+                            color: $color-white;
+                        }
+                    }
+
+                    a{
+                        display: block;
+                        padding: 1rem 2rem;
+                        height: 100%;
+                        font-size: .9rem;
+                        font-weight: bold;
+                        color: rgba($color: $color-white, $alpha: .5);
+                        text-decoration: none;
+
+                        @include device(phone){
+                            text-align: center;
+                            font-size: 1rem;
+
+                        }
+                    }
+                }
+
+                li.active{
+                    background-color: rgba($color: $color-white, $alpha: .1);
+                    a{
+                        color: #fff;
+                    }
+                } 
+            }
+        }
+    }
+
+
+    section{
+        grid-area: mySection;
+        .container2{
+            margin: 0 1rem;
+            @include device(phone){
+                // padding:1rem;
+                margin: 0 1rem;
+                
+            }
+            .welcome{
+                font-size: 1.8rem;
+                padding: 1rem 1.2rem;
+                font-weight: bold;
+                border-bottom: 1px solid #ddd;
+                text-transform: capitalize;
+
+                @include device(phone){
+                    width: 100% !important;
+                    font-size: 1.3rem;
+                    font-weight: bold;
+                    border-bottom: 1px solid #ddd;
+                    text-transform: capitalize;
+                    box-sizing: border-box;
+                }
+            }
+    
+            .admin-cards{
+                margin-top: 1.5rem;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 3rem;
+
+                @include device(phone){
+                    margin-top: 1.2rem;
+                    grid-template-columns: 0;
+                    grid-template-rows: repeat(3, 1fr) !important;
+                    grid-gap: 1.5rem;
+                }
+    
+                .card{
+                    border-radius: 5px;
+                    box-shadow: 2px 3px 10px rgba($color: #000, $alpha: .3);
+                    transition: all .3s ease;
+                    cursor: pointer;
+
+                    @include device (phone){
+                        border-radius: 5px;
+                        margin-bottom: 5px;
+                        box-shadow: 2px 3px 10px rgba($color: #000, $alpha: .3);
+                        width: 15rem;
+                        box-sizing: border-box !important;
+                    }
+    
+                    &:hover{
+                        transform: translateY(-5px);
+                    }
+    
+                    &:hover a i{
+                        transform: rotate(90deg);  
+                    }
+    
+    
+                    &:nth-child(1){
+                        background-color: #00a8ff;
+                    }
+                    &:nth-child(2){
+                        background-color: #e1b12c;
+                    }
+                    &:nth-child(3){
+                        background-color: #27ae60;
+                    }
+                    &:nth-child(4){
+                        background-color: #c23616;
+                    }
+                    .card-title{
+                        padding: 1.5rem .8rem;
+                        font-size: .9rem;
+                        font-weight: bold;
+                        color: $color-white;
+                        box-shadow: 0 2px 10px rgba($color: #000, $alpha: .1);
+                    }
+                }
+    
+                .viwe-all{
+                    padding: 1.2rem .8rem;
+                    a{
+                        font-size: .8rem;
+                        color: $color-white;
+                        text-decoration: none;
+                        position: relative;
+                        display: block;
+                        
+                        i{
+                            position: absolute;
+                            right: 0;
+                            top: 7px;
+                            font-size: .6rem;
+                            transition: all .3s ease;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

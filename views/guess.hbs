@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <title>Admin - Təxminlər</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header">
+                <div class="logo">
+                    <a href="/home">GUTE - Admin</a>
+                </div>
+                <div class="log-out">
+                    <a href="/">Çıxış et<i class="fas fa-sign-out-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        <aside>
+            <nav class="menu">
+                <ul>
+                    <li>
+                        <a href="/home">Ana səhifə</a>
+                    </li>
+                    <li>
+                        <a href="/notification">Bildirişlər</a>
+                    </li>
+                    <li class="active">
+                        <a href="/guess">Təxminlər</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <section>
+            <div class="container2">
+                <div class="welcome">
+                    Təxminlər
+                </div>
+                <div class="post-content">
+                    <div class="post-content-title">
+                        Aşağıdakı cədvəldə bütün təxminlər göstərilmişdir.
+                    </div>
+                    <a style="text-decoration: none; display: inline-block; border-radius: 5px; font-size: .8rem; background-color: #34495e; color: #fff; padding: 4px 6px; font-weight: bold; margin-top: 5px;"
+                        href="/guess-add">Əlavə et</a>
+                </div>
+                <div class="table-title">Oyunlar</div>
+                <div class="post-content-list">
+                    <table class="post-table">
+                        <thead>
+                            <tr>
+                                <th>Qarşılaşma</th>
+                                <th>Tarix və saat</th>
+                                <th>Təxmin</th>
+                                <th>Status</th>
+                                <th>Aksiyon</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each guesses}}
+                            <tr>
+                                <td><a href="/guess/edit/{{id}}">{{homeTeam}} - {{guestTeam}}</a></td>
+                                <td>{{gameDate}}, {{gameHour}}</td>
+                                <td>{{gameGuess}} - {{gameCoefficient}}</td>
+                                <td>{{#if (eq gameStatus 0)}} Gözləmədə {{else}} {{#if (eq gameStatus 1)}} Tuttu {{else}} Tutmadı {{/if}} {{/if}}</td>
+                                <td><a href="/guess/delete/{{id}}">Sil</a></td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+</body>
+
+</html>

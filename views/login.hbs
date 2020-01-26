@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <title>Admin - Login</title>
+</head>
+
+<body>
+    <div class="admin-hero">
+        <div class="admin-login-box">
+            <div class="login-title">
+                Admin
+            </div>
+            <form action="/" method="POST">
+                <div class="groups">
+                    <div style="color:red; font-weight:bold; margin-top:25px; font-size: 11px;">
+                        {{alert}}
+                    </div>
+                    <input type="text" id="name" value="" name="username" placeholder="İstifadəçi adı" required
+                        autocomplete="off" minlength="5">
+
+                    <input type="password" id="userpassword" value="" name="userpassword" placeholder="Şifrə" required
+                        autocomplete="off" minlength="5">
+
+                    <button name="logBtn" type="submit">Daxil ol</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

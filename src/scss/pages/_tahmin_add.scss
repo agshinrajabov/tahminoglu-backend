@@ -1,0 +1,93 @@
+.match-content{
+    margin-top: 1rem;
+    width: 100%;
+    border: 1px solid rgba($color: $color-blue, $alpha: .5);
+
+    .match-title{
+        background-color: $color-blue;
+        color: $color-white;
+        border-bottom: 1px solid #ddd;
+        padding: 7px 1rem;
+        font-size: .9rem;
+        font-weight: 700;
+
+        @include device(phone){
+            background-color: $color-blue;
+            color: $color-white;
+            border-bottom: 1px solid #ddd;
+            padding: 7px 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+    }
+
+    .match-form{
+        padding: 1rem;
+
+        .submit{
+            background-color: $color-blue;
+            color: $color-white;
+            border: none;
+            outline: none;
+            padding: 6px 9px;
+            text-transform: uppercase;
+            border-radius: 5px;
+            font-size: .9rem;
+            font-weight: bold;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        .input-group{
+            display: flex;
+            flex-direction: row;
+            @include device(phone){
+                flex-direction: column !important;
+            }
+            :not(:first-child){
+                margin-left: 1rem;
+
+                @include device(phone){
+                    margin-left: 0 !important;
+                }
+            }
+
+            .input-label{
+                flex: 1;
+
+                .check{
+                    display: inline-block;
+                }
+
+                .cbox{
+                    width: 1rem;
+                    margin-top: 1rem;
+                }
+
+                label{
+                    font-size: .8rem;
+                    font-weight: bold;
+                }
+
+                input{
+                    display: block;
+                    width: 100%;
+                    box-sizing: border-box;
+                    outline: none;
+                    padding: 9px 7px;
+                    margin-bottom: 1rem;
+                    margin-top: 5px;
+                    margin-left: 0;
+                    margin-right: 0;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    background-color: $color-blue;
+                    color: $color-white;
+                }
+                ::placeholder{
+                    color: rgba($color: #fff, $alpha: .7);
+                }
+            }
+        }
+    }
+}
