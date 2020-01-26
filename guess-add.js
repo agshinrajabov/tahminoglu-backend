@@ -9,6 +9,7 @@ var guessAddSchema = new Schema({
     gameHour: String,
     gameGuess: String,
     gameCoefficient: String,
+    gameText: String,
     createdDate: Date
 });
 

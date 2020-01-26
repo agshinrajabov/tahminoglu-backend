@@ -92,7 +92,8 @@ app.post('/guess-add', urlencodedParser, function (req, res) {
         gameStatus: req.body.gender,
         gameHour: req.body.gameHour,
         gameGuess: req.body.gameGuess,
-        gameCoefficient: req.body.gameCoefficient
+        gameCoefficient: req.body.gameCoefficient,
+        gameText: req.body.gameText,
     });
 
     newGuess.save((err) => {
@@ -142,7 +143,8 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
         gameStatus: req.body.gender,
         gameHour: req.body.gameHour,
         gameGuess: req.body.gameGuess,
-        gameCoefficient: req.body.gameCoefficient
+        gameCoefficient: req.body.gameCoefficient,
+        gameText: req.body.gameText,
     }, (err, data) => {
         if(!err) {
             return res.redirect('/guess')
@@ -154,12 +156,21 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
 });
 
 app.get('/api', (req,res) => {
-    Guess.find({}, null, {sort: {gameStatus: 0}}, (err,data) => {
+    Guess.find({}, null, {sort: {createdDate: -1}}, (err,data) => {
         if(err) {
             throw err;
         }
         res.json(data);
     })
+});
+
+app.get('/updatedApi', (req,res) => {
+    Guess.find({}, null, {sort: {createdDate: -1}}, (err,data) => {
+        if(err) {
+            throw err;
+        }
+        res.json(data);
+    }).where('gameStatus').equals(1);
 });
 
 app.get('/settings', (req,res) => {
