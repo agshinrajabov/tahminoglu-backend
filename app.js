@@ -7,12 +7,14 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var mongoDB = require('./expressMongoDB');
 var helper = require('./helper');
 var app = express();
+var session = require('express-session');
 var Guess = require('./guess-add.js');
  
 app.set('view engine', 'hbs');
 app.engine('hbs', helper.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.use('/assets', express.static(path.join(__dirname, 'dist')))
+app.use(session({secret: 'secret', resave: true,saveUninitialized: true}));
 
 //Admin Login
 const login = {
@@ -20,11 +22,32 @@ const login = {
     password: '12345'
 }
 
+
+const sessionChecker = (req, res, next) => {
+    if (req.session.loggedin && req.session.user) {
+        if(req.session.role === 1) {
+            res.redirect('/guess')
+        }
+    } else {
+        next();
+    }
+};
+
+const MatchSessionChecker = (req, res, next) => {
+    if (req.session.loggedin && req.session.user) {
+        if(req.session.role === 1) {
+            next();
+        }
+    } else {
+        res.redirect('/');
+    }
+};
+
 app.get('/home', function (req, res) {
     res.render('home');
 });
 
-app.get('/', function (req, res) {
+app.get('/', sessionChecker, function (req, res) {
     res.render('login');
 });
 
@@ -34,6 +57,9 @@ app.post('/', urlencodedParser, function(req,res) {
     var pass = req.body.userpassword;
     
     if(user == login.username && pass == login.password) {
+        req.session.loggedin = true;
+        req.session.user = user;
+        req.session.role = 1;
         return res.redirect('/home');
     } else {
        return res.render('login', {alert: "Daxil etdiyiniz istifadəçi adı və ya şifrə yanlışdır."});
@@ -45,7 +71,7 @@ app.get('/notification', function (req, res) {
     res.render('notification');
 });
 
-app.get('/guess', function (req, res) {
+app.get('/guess', MatchSessionChecker, function (req, res) {
     Guess.find({}, (err,data) => {
         if(err) {
             throw err;
@@ -54,7 +80,7 @@ app.get('/guess', function (req, res) {
     });
 });
 
-app.get('/guess-add', function (req, res) {
+app.get('/guess-add', MatchSessionChecker, function (req, res) {
     res.render('guess-add');
 });
 
@@ -80,7 +106,7 @@ app.post('/guess-add', urlencodedParser, function (req, res) {
 });
 
 
-app.get('/guess/delete/:id', function(req,res) {
+app.get('/guess/delete/:id', MatchSessionChecker, function(req,res) {
     const id = req.params.id
     //Find By Id
     Guess.findOneAndRemove({_id: id}, (err, data) => {
@@ -93,7 +119,7 @@ app.get('/guess/delete/:id', function(req,res) {
     });
 });
 
-app.get('/guess/edit/:id', function(req,res) {
+app.get('/guess/edit/:id', MatchSessionChecker, function(req,res) {
     const id = req.params.id
     //Find By Id
     Guess.findById({_id: id}, (err, data) => {
