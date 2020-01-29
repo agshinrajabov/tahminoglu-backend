@@ -177,7 +177,7 @@ app.get('/settings', (req,res) => {
     res.json({
         "myBanner": false,
         "admobBanner": false,
-        "bannerLink": "https://miro.medium.com/max/640/1*uyZqUA7yQuJYrHtuDv49Rw.jpeg"
+        "bannerLink": null
     });
 })
  
