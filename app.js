@@ -47,6 +47,10 @@ app.get('/home', function (req, res) {
     res.render('home');
 });
 
+app.get('/privacy', function (req, res) {
+    res.render('privacy');
+});
+
 app.get('/', sessionChecker, function (req, res) {
     res.render('login');
 });
