@@ -6,22 +6,24 @@ var bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var mongoDB = require('./expressMongoDB');
 var helper = require('./helper');
+var scrape = require('./scrape');
 var app = express();
 var session = require('express-session');
 var Guess = require('./guess-add.js');
- 
+var compression = require('compression');
+
 app.set('view engine', 'hbs');
 app.engine('hbs', helper.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.use('/assets', express.static(path.join(__dirname, 'dist')))
 app.use(session({secret: 'secret', resave: true,saveUninitialized: true}));
+app.use(compression());
 
 //Admin Login
 const login = {
-    username: 'Admin',
-    password: '12345'
+    username: 'seymur',
+    password: 'Tahmin2020Seymur!!'
 }
-
 
 const sessionChecker = (req, res, next) => {
     if (req.session.loggedin && req.session.user) {
@@ -70,7 +72,6 @@ app.post('/', urlencodedParser, function(req,res) {
     }
 });
 
-
 app.get('/notification', function (req, res) {
     res.render('notification');
 });
@@ -109,7 +110,6 @@ app.post('/guess-add', urlencodedParser, function (req, res) {
         }
     }) 
 });
-
 
 app.get('/guess/delete/:id', MatchSessionChecker, function(req,res) {
     const id = req.params.id
@@ -183,6 +183,8 @@ app.get('/settings', (req,res) => {
         "admobBanner": false,
         "bannerLink": null
     });
-})
+});
+
+scrape(app);
  
 app.listen(process.env.PORT || 4949);
