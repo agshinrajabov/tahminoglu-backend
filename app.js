@@ -184,6 +184,7 @@ app.get('/settings', (req,res) => {
         "bannerLink": null
     });
 });
+
 scrape(app);
  
 app.listen(process.env.PORT || 4949);
