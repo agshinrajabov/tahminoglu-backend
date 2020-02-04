@@ -6,6 +6,7 @@ var bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var mongoDB = require('./expressMongoDB');
 var helper = require('./helper');
+var liveJSON = require('./live.json');
 var scrape = require('./scrape');
 var app = express();
 var session = require('express-session');
@@ -23,7 +24,7 @@ app.use(compression());
 const login = {
     username: 'seymur',
     password: 'Tahmin2020Seymur!!'
-}
+};
 
 const sessionChecker = (req, res, next) => {
     if (req.session.loggedin && req.session.user) {
@@ -158,6 +159,10 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
         }
     });
 });
+
+app.get('/live', (req, res) => {
+    res.json(liveJSON);
+})
 
 app.get('/api', (req,res) => {
     Guess.find({}, null, {sort: {createdDate: -1}}, (err,data) => {

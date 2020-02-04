@@ -1,0 +1,1155 @@
+{
+    "api": {
+        "results": 20,
+        "fixtures": [
+            {
+                "fixture_id": 157639,
+                "league_id": 525,
+                "league": {
+                    "name": "Ligue 1",
+                    "country": "France",
+                    "logo": "https://media.api-football.com/leagues/4.svg",
+                    "flag": "https://media.api-football.com/flags/fr.svg"
+                },
+                "event_date": "2020-02-04T18:00:00+00:00",
+                "event_timestamp": 1580839200,
+                "firstHalfStart": 1580839200,
+                "secondHalfStart": 1580842800,
+                "round": "Regular Season - 23",
+                "status": "Second Half",
+                "statusShort": "2H",
+                "elapsed": 90,
+                "venue": "Stade Pierre-Mauroy",
+                "referee": "Johan Hamel, France",
+                "homeTeam": {
+                    "team_id": 79,
+                    "team_name": "Lille",
+                    "logo": "https://media.api-football.com/teams/79.png"
+                },
+                "awayTeam": {
+                    "team_id": 94,
+                    "team_name": "Rennes",
+                    "logo": "https://media.api-football.com/teams/94.png"
+                },
+                "goalsHomeTeam": 1,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "1-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": [
+                    {
+                        "elapsed": 4,
+                        "team_id": 79,
+                        "teamName": "Lille",
+                        "player_id": 22240,
+                        "player": "L. Remy",
+                        "assist_id": 22229,
+                        "assist": "J. Ikone",
+                        "type": "Goal",
+                        "detail": "Normal Goal"
+                    },
+                    {
+                        "elapsed": 34,
+                        "team_id": 94,
+                        "teamName": "Rennes",
+                        "player_id": 2214,
+                        "player": "R. del Castillo",
+                        "assist_id": 1496,
+                        "assist": "Raphinha",
+                        "type": "subst",
+                        "detail": "Raphinha"
+                    },
+                    {
+                        "elapsed": 44,
+                        "team_id": 79,
+                        "teamName": "Lille",
+                        "player_id": 22229,
+                        "player": "J. Ikone",
+                        "assist_id": null,
+                        "assist": "Holding",
+                        "type": "Card",
+                        "detail": "Yellow Card"
+                    },
+                    {
+                        "elapsed": 54,
+                        "team_id": 94,
+                        "teamName": "Rennes",
+                        "player_id": 2202,
+                        "player": "H. Traore",
+                        "assist_id": null,
+                        "assist": "Tripping",
+                        "type": "Card",
+                        "detail": "Yellow Card"
+                    },
+                    {
+                        "elapsed": 56,
+                        "team_id": 79,
+                        "teamName": "Lille",
+                        "player_id": 22240,
+                        "player": "L. Remy",
+                        "assist_id": null,
+                        "assist": "Roughing",
+                        "type": "Card",
+                        "detail": "Yellow Card"
+                    },
+                    {
+                        "elapsed": 68,
+                        "team_id": 94,
+                        "teamName": "Rennes",
+                        "player_id": 2210,
+                        "player": "A. Hunou",
+                        "assist_id": 84128,
+                        "assist": "Y. Gboho",
+                        "type": "subst",
+                        "detail": "Y. Gboho"
+                    },
+                    {
+                        "elapsed": 68,
+                        "team_id": 79,
+                        "teamName": "Lille",
+                        "player_id": 22238,
+                        "player": "Luiz Araujo",
+                        "assist_id": 22240,
+                        "assist": "L. Remy",
+                        "type": "subst",
+                        "detail": "L. Remy"
+                    },
+                    {
+                        "elapsed": 83,
+                        "team_id": 79,
+                        "teamName": "Lille",
+                        "player_id": 513,
+                        "player": "R. Sanches",
+                        "assist_id": null,
+                        "assist": "Roughing",
+                        "type": "Card",
+                        "detail": "Yellow Card"
+                    },
+                    {
+                        "elapsed": 84,
+                        "team_id": 94,
+                        "teamName": "Rennes",
+                        "player_id": 162266,
+                        "player": "L. Da Cunha",
+                        "assist_id": 21154,
+                        "assist": "F. Tait",
+                        "type": "subst",
+                        "detail": "F. Tait"
+                    },
+                    {
+                        "elapsed": 87,
+                        "team_id": 79,
+                        "teamName": "Lille",
+                        "player_id": 22228,
+                        "player": "Xeka",
+                        "assist_id": 22235,
+                        "assist": "J. Bamba",
+                        "type": "subst",
+                        "detail": "J. Bamba"
+                    }
+                ]
+            },
+            {
+                "fixture_id": 157640,
+                "league_id": 525,
+                "league": {
+                    "name": "Ligue 1",
+                    "country": "France",
+                    "logo": "https://media.api-football.com/leagues/4.svg",
+                    "flag": "https://media.api-football.com/flags/fr.svg"
+                },
+                "event_date": "2020-02-04T18:00:00+00:00",
+                "event_timestamp": 1580839200,
+                "firstHalfStart": 1580839200,
+                "secondHalfStart": 1580842800,
+                "round": "Regular Season - 23",
+                "status": "Second Half",
+                "statusShort": "2H",
+                "elapsed": 90,
+                "venue": "Stade Louis II",
+                "referee": "Jeremy Stinat, France",
+                "homeTeam": {
+                    "team_id": 91,
+                    "team_name": "Monaco",
+                    "logo": "https://media.api-football.com/teams/91.png"
+                },
+                "awayTeam": {
+                    "team_id": 77,
+                    "team_name": "Angers",
+                    "logo": "https://media.api-football.com/teams/77.png"
+                },
+                "goalsHomeTeam": 1,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "1-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": [
+                    {
+                        "elapsed": 18,
+                        "team_id": 91,
+                        "teamName": "Monaco",
+                        "player_id": 121,
+                        "player": "S. Jovetic",
+                        "assist_id": 22254,
+                        "assist": "Y. Fofana",
+                        "type": "Goal",
+                        "detail": "Normal Goal"
+                    },
+                    {
+                        "elapsed": 55,
+                        "team_id": 77,
+                        "teamName": "Angers",
+                        "player_id": 3237,
+                        "player": "I. Traore",
+                        "assist_id": null,
+                        "assist": "Roughing",
+                        "type": "Card",
+                        "detail": "Yellow Card"
+                    },
+                    {
+                        "elapsed": 58,
+                        "team_id": 91,
+                        "teamName": "Monaco",
+                        "player_id": 1271,
+                        "player": "A. Tchouameni",
+                        "assist_id": 108,
+                        "assist": "C. Fabregas",
+                        "type": "subst",
+                        "detail": "C. Fabregas"
+                    },
+                    {
+                        "elapsed": 61,
+                        "team_id": 77,
+                        "teamName": "Angers",
+                        "player_id": 20780,
+                        "player": "M. Pereira",
+                        "assist_id": 21446,
+                        "assist": "A. Bobichon",
+                        "type": "subst",
+                        "detail": "A. Bobichon"
+                    },
+                    {
+                        "elapsed": 67,
+                        "team_id": 77,
+                        "teamName": "Angers",
+                        "player_id": 3407,
+                        "player": "S. Bahoken",
+                        "assist_id": 2718,
+                        "assist": "R. Alioui",
+                        "type": "subst",
+                        "detail": "R. Alioui"
+                    },
+                    {
+                        "elapsed": 71,
+                        "team_id": 91,
+                        "teamName": "Monaco",
+                        "player_id": 213,
+                        "player": "B. Keita",
+                        "assist_id": 121,
+                        "assist": "S. Jovetic",
+                        "type": "subst",
+                        "detail": "S. Jovetic"
+                    },
+                    {
+                        "elapsed": 73,
+                        "team_id": 91,
+                        "teamName": "Monaco",
+                        "player_id": 114,
+                        "player": "A. Silva",
+                        "assist_id": null,
+                        "assist": "Tripping",
+                        "type": "Card",
+                        "detail": "Yellow Card"
+                    },
+                    {
+                        "elapsed": 77,
+                        "team_id": 77,
+                        "teamName": "Angers",
+                        "player_id": 21652,
+                        "player": "C. Ninga",
+                        "assist_id": 21145,
+                        "assist": "P. Capelle",
+                        "type": "subst",
+                        "detail": "P. Capelle"
+                    },
+                    {
+                        "elapsed": 79,
+                        "team_id": 91,
+                        "teamName": "Monaco",
+                        "player_id": 1271,
+                        "player": "A. Tchouameni",
+                        "assist_id": null,
+                        "assist": "Roughing",
+                        "type": "Card",
+                        "detail": "Yellow Card"
+                    },
+                    {
+                        "elapsed": 82,
+                        "team_id": 77,
+                        "teamName": "Angers",
+                        "player_id": 21146,
+                        "player": "A. Fulgini",
+                        "assist_id": null,
+                        "assist": "Tripping",
+                        "type": "Card",
+                        "detail": "Yellow Card"
+                    }
+                ]
+            },
+            {
+                "fixture_id": 179414,
+                "league_id": 637,
+                "league": {
+                    "name": "Ligat ha'Al",
+                    "country": "Israel",
+                    "logo": null,
+                    "flag": "https://media.api-football.com/flags/il.svg"
+                },
+                "event_date": "2020-02-04T18:15:00+00:00",
+                "event_timestamp": 1580840100,
+                "firstHalfStart": 1580840100,
+                "secondHalfStart": 1580843700,
+                "round": "Regular Season - 22",
+                "status": "Second Half",
+                "statusShort": "2H",
+                "elapsed": 77,
+                "venue": "Sammy Ofer Stadium, Haifa",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 4195,
+                    "team_name": "Maccabi Haifa",
+                    "logo": "https://media.api-football.com/teams/4195.png"
+                },
+                "awayTeam": {
+                    "team_id": 4501,
+                    "team_name": "Hapoel Tel Aviv",
+                    "logo": "https://media.api-football.com/teams/4501.png"
+                },
+                "goalsHomeTeam": 4,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "3-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": [
+                    {
+                        "elapsed": 4,
+                        "team_id": 4195,
+                        "teamName": "Maccabi Haifa",
+                        "player_id": 111266,
+                        "player": "N. Lavi",
+                        "assist_id": null,
+                        "assist": null,
+                        "type": "Goal",
+                        "detail": "Normal Goal"
+                    },
+                    {
+                        "elapsed": 8,
+                        "team_id": 4195,
+                        "teamName": "Maccabi Haifa",
+                        "player_id": 111263,
+                        "player": "N. Rukavytsya",
+                        "assist_id": null,
+                        "assist": null,
+                        "type": "Goal",
+                        "detail": "Normal Goal"
+                    },
+                    {
+                        "elapsed": 34,
+                        "team_id": 4195,
+                        "teamName": "Maccabi Haifa",
+                        "player_id": 229,
+                        "player": "T. Sainsbury",
+                        "assist_id": null,
+                        "assist": null,
+                        "type": "Goal",
+                        "detail": "Normal Goal"
+                    },
+                    {
+                        "elapsed": 46,
+                        "team_id": 4501,
+                        "teamName": "Hapoel Tel Aviv",
+                        "player_id": null,
+                        "player": "M. Barshazki",
+                        "assist_id": null,
+                        "assist": "D. Gruper",
+                        "type": "subst",
+                        "detail": "D. Gruper"
+                    },
+                    {
+                        "elapsed": 47,
+                        "team_id": 4195,
+                        "teamName": "Maccabi Haifa",
+                        "player_id": 19716,
+                        "player": "Y. Wildschut",
+                        "assist_id": null,
+                        "assist": null,
+                        "type": "Goal",
+                        "detail": "Normal Goal"
+                    },
+                    {
+                        "elapsed": 56,
+                        "team_id": 4501,
+                        "teamName": "Hapoel Tel Aviv",
+                        "player_id": 105709,
+                        "player": "M. Buzaglo",
+                        "assist_id": 39429,
+                        "assist": "F. J. Rodriguez V.",
+                        "type": "subst",
+                        "detail": "F. J. Rodriguez V."
+                    },
+                    {
+                        "elapsed": 57,
+                        "team_id": 4195,
+                        "teamName": "Maccabi Haifa",
+                        "player_id": 108018,
+                        "player": "Y. Shua",
+                        "assist_id": 111263,
+                        "assist": "N. Rukavytsya",
+                        "type": "subst",
+                        "detail": "N. Rukavytsya"
+                    },
+                    {
+                        "elapsed": 59,
+                        "team_id": 4501,
+                        "teamName": "Hapoel Tel Aviv",
+                        "player_id": 93060,
+                        "player": "M. Peersman",
+                        "assist_id": null,
+                        "assist": null,
+                        "type": "Card",
+                        "detail": "Yellow Card"
+                    },
+                    {
+                        "elapsed": 61,
+                        "team_id": 4195,
+                        "teamName": "Maccabi Haifa",
+                        "player_id": 111297,
+                        "player": "M. Awad",
+                        "assist_id": 111261,
+                        "assist": "Y. Ashkenazi",
+                        "type": "subst",
+                        "detail": "Y. Ashkenazi"
+                    },
+                    {
+                        "elapsed": 75,
+                        "team_id": 4195,
+                        "teamName": "Maccabi Haifa",
+                        "player_id": null,
+                        "player": "",
+                        "assist_id": null,
+                        "assist": null,
+                        "type": "Card",
+                        "detail": "Yellow Card"
+                    }
+                ]
+            },
+            {
+                "fixture_id": 182559,
+                "league_id": 655,
+                "league": {
+                    "name": "NB I",
+                    "country": "Hungary",
+                    "logo": null,
+                    "flag": "https://media.api-football.com/flags/hu.svg"
+                },
+                "event_date": "2020-02-04T19:00:00+00:00",
+                "event_timestamp": 1580842800,
+                "firstHalfStart": 1580842800,
+                "secondHalfStart": null,
+                "round": "Regular Season - 19",
+                "status": "Halftime",
+                "statusShort": "HT",
+                "elapsed": 45,
+                "venue": "Városi Stadion",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 2389,
+                    "team_name": "Mezokovesd-zsory",
+                    "logo": "https://media.api-football.com/teams/2389.png"
+                },
+                "awayTeam": {
+                    "team_id": 2255,
+                    "team_name": "Ujpest",
+                    "logo": "https://media.api-football.com/teams/2255.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 1,
+                "score": {
+                    "halftime": "0-1",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": [
+                    {
+                        "elapsed": 14,
+                        "team_id": 2255,
+                        "teamName": "Ujpest",
+                        "player_id": 2339,
+                        "player": "Z. Berecz",
+                        "assist_id": null,
+                        "assist": null,
+                        "type": "Goal",
+                        "detail": "Own Goal"
+                    },
+                    {
+                        "elapsed": 37,
+                        "team_id": 2255,
+                        "teamName": "Ujpest",
+                        "player_id": 28399,
+                        "player": "V. Onovo",
+                        "assist_id": null,
+                        "assist": null,
+                        "type": "Card",
+                        "detail": "Yellow Card"
+                    }
+                ]
+            },
+            {
+                "fixture_id": 315969,
+                "league_id": 919,
+                "league": {
+                    "name": "Taça de Portugal",
+                    "country": "Portugal",
+                    "logo": "https://media.api-football.com/leagues/12.jpeg",
+                    "flag": "https://media.api-football.com/flags/pt.svg"
+                },
+                "event_date": "2020-02-04T19:15:00+00:00",
+                "event_timestamp": 1580843700,
+                "firstHalfStart": 1580843700,
+                "secondHalfStart": null,
+                "round": "Semi-finals",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 30,
+                "venue": "Estádio da Luz, Lisbon",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 211,
+                    "team_name": "Benfica",
+                    "logo": "https://media.api-football.com/teams/211.png"
+                },
+                "awayTeam": {
+                    "team_id": 242,
+                    "team_name": "Famalicao",
+                    "logo": "https://media.api-football.com/teams/242.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": [
+                    {
+                        "elapsed": 13,
+                        "team_id": 242,
+                        "teamName": "Famalicao",
+                        "player_id": 42,
+                        "player": "G. A. Assuncao",
+                        "assist_id": null,
+                        "assist": "Tripping",
+                        "type": "Card",
+                        "detail": "Yellow Card"
+                    }
+                ]
+            },
+            {
+                "fixture_id": 279703,
+                "league_id": 1177,
+                "league": {
+                    "name": "Non League Premier - Northern",
+                    "country": "England",
+                    "logo": null,
+                    "flag": "https://media.api-football.com/flags/gb.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "Regular Season - 32",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 1,
+                "venue": "The Proctor Cars Stadium",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 7731,
+                    "team_name": "Matlock Town",
+                    "logo": "https://media.api-football.com/teams/7731.png"
+                },
+                "awayTeam": {
+                    "team_id": 7740,
+                    "team_name": "Radcliffe",
+                    "logo": "https://media.api-football.com/teams/7740.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 220304,
+                "league_id": 814,
+                "league": {
+                    "name": "Premiership",
+                    "country": "Northern-Ireland",
+                    "logo": null,
+                    "flag": "https://media.api-football.com/flags/gb.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "Regular Season - 15",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 5,
+                "venue": "Windsor Park",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 583,
+                    "team_name": "Linfield",
+                    "logo": "https://media.api-football.com/teams/583.png"
+                },
+                "awayTeam": {
+                    "team_id": 5351,
+                    "team_name": "Dungannon Swifts",
+                    "logo": "https://media.api-football.com/teams/5351.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 313878,
+                "league_id": 583,
+                "league": {
+                    "name": "DFB Pokal",
+                    "country": "Germany",
+                    "logo": "https://media.api-football.com/leagues/204.png",
+                    "flag": "https://media.api-football.com/flags/de.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "3rd Round",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 3,
+                "venue": "VELTINS-Arena",
+                "referee": "Harm Osmers, Germany",
+                "homeTeam": {
+                    "team_id": 174,
+                    "team_name": "FC Schalke 04",
+                    "logo": "https://media.api-football.com/teams/174.png"
+                },
+                "awayTeam": {
+                    "team_id": 159,
+                    "team_name": "Hertha Berlin",
+                    "logo": "https://media.api-football.com/teams/159.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 275646,
+                "league_id": 1169,
+                "league": {
+                    "name": "National League - South",
+                    "country": "England",
+                    "logo": null,
+                    "flag": "https://media.api-football.com/flags/gb.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "Regular Season - 31",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 2,
+                "venue": "Bulpit Lane",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 8661,
+                    "team_name": "Hungerford Town",
+                    "logo": "https://media.api-football.com/teams/8661.png"
+                },
+                "awayTeam": {
+                    "team_id": 8659,
+                    "team_name": "Dorking Wanderers",
+                    "logo": "https://media.api-football.com/teams/8659.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 280000,
+                "league_id": 1178,
+                "league": {
+                    "name": "Non League Premier - Southern",
+                    "country": "England",
+                    "logo": null,
+                    "flag": "https://media.api-football.com/flags/gb.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "Regular Season - 17",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 4,
+                "venue": "The BlackGold Stadium",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 7738,
+                    "team_name": "Poole Town",
+                    "logo": "https://media.api-football.com/teams/7738.png"
+                },
+                "awayTeam": {
+                    "team_id": 7732,
+                    "team_name": "Merthyr Town",
+                    "logo": "https://media.api-football.com/teams/7732.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 168113,
+                "league_id": 581,
+                "league": {
+                    "name": "League One",
+                    "country": "England",
+                    "logo": "https://media.api-football.com/leagues/164.png",
+                    "flag": "https://media.api-football.com/flags/gb.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "Regular Season - 16",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 4,
+                "venue": "Prenton Park",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 1381,
+                    "team_name": "Tranmere",
+                    "logo": "https://media.api-football.com/teams/1381.png"
+                },
+                "awayTeam": {
+                    "team_id": 1354,
+                    "team_name": "Doncaster",
+                    "logo": "https://media.api-football.com/teams/1354.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 211662,
+                "league_id": 764,
+                "league": {
+                    "name": "National League",
+                    "country": "England",
+                    "logo": "https://media.api-football.com/leagues/222.png",
+                    "flag": "https://media.api-football.com/flags/gb.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "Regular Season - 3",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 3,
+                "venue": "The Perrys Crabble Stadium",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 1829,
+                    "team_name": "Dover",
+                    "logo": "https://media.api-football.com/teams/1829.png"
+                },
+                "awayTeam": {
+                    "team_id": 1819,
+                    "team_name": "Barrow",
+                    "logo": "https://media.api-football.com/teams/1819.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 280078,
+                "league_id": 1178,
+                "league": {
+                    "name": "Non League Premier - Southern",
+                    "country": "England",
+                    "logo": null,
+                    "flag": "https://media.api-football.com/flags/gb.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "Regular Season - 24",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 2,
+                "venue": "Imber Court",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 4683,
+                    "team_name": "Metropolitan Police",
+                    "logo": "https://media.api-football.com/teams/4683.png"
+                },
+                "awayTeam": {
+                    "team_id": 7699,
+                    "team_name": "Beaconsfield Town",
+                    "logo": "https://media.api-football.com/teams/7699.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 279084,
+                "league_id": 1176,
+                "league": {
+                    "name": "Non League Premier - Isthmian",
+                    "country": "England",
+                    "logo": null,
+                    "flag": "https://media.api-football.com/flags/gb.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "Regular Season - 18",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 4,
+                "venue": "Nyewood Lane",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 7703,
+                    "team_name": "Bognor Regis Town",
+                    "logo": "https://media.api-football.com/teams/7703.png"
+                },
+                "awayTeam": {
+                    "team_id": 7704,
+                    "team_name": "Brightlingsea Regent",
+                    "logo": "https://media.api-football.com/teams/7704.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 250169,
+                "league_id": 583,
+                "league": {
+                    "name": "DFB Pokal",
+                    "country": "Germany",
+                    "logo": "https://media.api-football.com/leagues/204.png",
+                    "flag": "https://media.api-football.com/flags/de.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "3rd Round",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 3,
+                "venue": "wohninvest WESERSTADION",
+                "referee": "Guido Winkmann, Germany",
+                "homeTeam": {
+                    "team_id": 162,
+                    "team_name": "Werder Bremen",
+                    "logo": "https://media.api-football.com/teams/162.png"
+                },
+                "awayTeam": {
+                    "team_id": 165,
+                    "team_name": "Borussia Dortmund",
+                    "logo": "https://media.api-football.com/teams/165.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 320840,
+                "league_id": 1063,
+                "league": {
+                    "name": "FA Cup",
+                    "country": "England",
+                    "logo": null,
+                    "flag": "https://media.api-football.com/flags/gb.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "4th Round Replays",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 3,
+                "venue": "Cardiff City Stadium, Cardiff",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 43,
+                    "team_name": "Cardiff",
+                    "logo": "https://media.api-football.com/teams/43.png"
+                },
+                "awayTeam": {
+                    "team_id": 53,
+                    "team_name": "Reading",
+                    "logo": "https://media.api-football.com/teams/53.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 279116,
+                "league_id": 1176,
+                "league": {
+                    "name": "Non League Premier - Isthmian",
+                    "country": "England",
+                    "logo": null,
+                    "flag": "https://media.api-football.com/flags/gb.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "Regular Season - 21",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 2,
+                "venue": "ProKit UK Stadium",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 7701,
+                    "team_name": "Bishop's Stortford",
+                    "logo": "https://media.api-football.com/teams/7701.png"
+                },
+                "awayTeam": {
+                    "team_id": 7761,
+                    "team_name": "Worthing",
+                    "logo": "https://media.api-football.com/teams/7761.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 320841,
+                "league_id": 1063,
+                "league": {
+                    "name": "FA Cup",
+                    "country": "England",
+                    "logo": null,
+                    "flag": "https://media.api-football.com/flags/gb.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "4th Round Replays",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 3,
+                "venue": "Pride Park Stadium, Derby",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 69,
+                    "team_name": "Derby",
+                    "logo": "https://media.api-football.com/teams/69.png"
+                },
+                "awayTeam": {
+                    "team_id": 1337,
+                    "team_name": "Northampton",
+                    "logo": "https://media.api-football.com/teams/1337.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 320843,
+                "league_id": 1063,
+                "league": {
+                    "name": "FA Cup",
+                    "country": "England",
+                    "logo": null,
+                    "flag": "https://media.api-football.com/flags/gb.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "4th Round Replays",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 3,
+                "venue": "St. Andrew's Stadium, Birmingham",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 54,
+                    "team_name": "Birmingham",
+                    "logo": "https://media.api-football.com/teams/54.png"
+                },
+                "awayTeam": {
+                    "team_id": 1346,
+                    "team_name": "Coventry",
+                    "logo": "https://media.api-football.com/teams/1346.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            },
+            {
+                "fixture_id": 279421,
+                "league_id": 1177,
+                "league": {
+                    "name": "Non League Premier - Northern",
+                    "country": "England",
+                    "logo": null,
+                    "flag": "https://media.api-football.com/flags/gb.svg"
+                },
+                "event_date": "2020-02-04T19:45:00+00:00",
+                "event_timestamp": 1580845500,
+                "firstHalfStart": 1580845500,
+                "secondHalfStart": null,
+                "round": "Regular Season - 6",
+                "status": "First Half",
+                "statusShort": "1H",
+                "elapsed": 4,
+                "venue": "Bower Fold",
+                "referee": null,
+                "homeTeam": {
+                    "team_id": 7749,
+                    "team_name": "Stalybridge Celtic",
+                    "logo": "https://media.api-football.com/teams/7749.png"
+                },
+                "awayTeam": {
+                    "team_id": 4691,
+                    "team_name": "Gainsborough Trinity",
+                    "logo": "https://media.api-football.com/teams/4691.png"
+                },
+                "goalsHomeTeam": 0,
+                "goalsAwayTeam": 0,
+                "score": {
+                    "halftime": "0-0",
+                    "fulltime": null,
+                    "extratime": null,
+                    "penalty": null
+                },
+                "events": []
+            }
+        ]
+    }
+}
