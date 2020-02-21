@@ -190,6 +190,17 @@ app.get('/settings', (req,res) => {
     });
 });
 
+
+app.get(
+    '/link',
+    deeplink({
+        fallback: 'https://tahminoglu.com',
+        android_package_name: 'com.tahminoglu.tahminoglu',
+        ios_store_link:
+        'https://apps.apple.com/az/app/tahmino%C4%9Flu-i-ddaa-tahminleri/id1496838071'
+    })
+);
+
 scrape(app);
  
 app.listen(process.env.PORT || 4949);
