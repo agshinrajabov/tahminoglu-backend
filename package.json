@@ -19,7 +19,6 @@
     "firebase-admin": "^8.9.2",
     "moment": "^2.24.0",
     "mongoose": "^5.8.9",
-    "node-deeplink": "^0.6.0",
     "request": "^2.88.0"
   },
   "engines": {

@@ -192,15 +192,9 @@ app.get('/settings', (req,res) => {
 });
 
 
-app.get(
-    '/deeplink',
-    deeplink({
-        fallback: 'https://tahminoglu.com',
-        android_package_name: 'com.tahminoglu.tahminoglu',
-        ios_store_link:
-        'https://apps.apple.com/az/app/tahmino%C4%9Flu-i-ddaa-tahminleri/id1496838071'
-    })
-);
+app.get('/link', function (req, res) {
+    res.render('link');
+});
 
 scrape(app);
  
