@@ -12,6 +12,7 @@ var app = express();
 var session = require('express-session');
 var Guess = require('./guess-add.js');
 var compression = require('compression');
+var deeplink = require('node-deeplink');
 
 app.set('view engine', 'hbs');
 app.engine('hbs', helper.engine);
