@@ -193,7 +193,7 @@ app.get('/settings', (req,res) => {
 
 
 app.get(
-    '/link',
+    '/deeplink',
     deeplink({
         fallback: 'https://tahminoglu.com',
         android_package_name: 'com.tahminoglu.tahminoglu',
