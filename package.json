@@ -20,7 +20,8 @@
     "firebase-admin": "^8.9.2",
     "moment": "^2.24.0",
     "mongoose": "^5.8.9",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "telegraf": "^3.36.0"
   },
   "engines": {
     "node": "10.x"

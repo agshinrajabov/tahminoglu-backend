@@ -7,6 +7,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var mongoDB = require('./expressMongoDB');
 var helper = require('./helper');
 var makeImage = require('./make-image');
+var telegram = require('./telegram');
 var liveJSON = require('./live.json');
 var scrape = require('./scrape');
 var app = express();
@@ -105,7 +106,8 @@ app.post('/guess-add', urlencodedParser, function (req, res) {
     makeImage(moment(req.body.gameDate).format('DD MMMM'), req.body.gameHour, req.body.homeTeam, req.body.guestTeam, req.body.gameCoefficient);
     newGuess.save((err) => {
         if(!err) {
-            return res.render('success', {image: './assets/' + req.body.homeTeam + '_' + req.body.guestTeam + '.jpg'})
+            telegram('./dist/' + req.body.homeTeam + '_' + req.body.guestTeam + '.jpg');
+            return res.render('success', {image: './dist/' + req.body.homeTeam + '_' + req.body.guestTeam + '.jpg'})
         } else {
             console.log(err);
             res.render('guess-add');
