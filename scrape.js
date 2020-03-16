@@ -467,34 +467,39 @@ module.exports = function(app) {
                 if (!error && response.statusCode == 200) {
                     var data = JSON.parse(body);
                     // use data
-
+                    
                     const FixtureSeason = data.api.fixtures.toString();
-                    var fixtureNumber = [];
-                    request({url: "http://v2.api-football.com/fixtures/league/" + uefaNumber + "/" + FixtureSeason + "?timezone=Asia/Baku", headers: header} , (error,response,body) => {
-                        var fixtureNumbers = [];
-                        if (!error && response.statusCode == 200) {
-                            var data = JSON.parse(body);
-                            var fixtures = data.api.fixtures;
-                            for( var i in fixtures) {
-                                fixtureNumbers.push(fixtures[i].fixture_id);
-                            }
-                        }
-                        for(var j in fixtureNumbers) {
-                            var fixtureID = fixtureNumbers[j];
-
-                            request({url: "http://v2.api-football.com/predictions/" + fixtureID, headers:header}, (error,response, body) => {
-                                if (!error && response.statusCode == 200) {
-                                    var data = JSON.parse(body);
-                                    var dataAPI = data.api.predictions;
-                                    var predictions = [];
-                                    for(var q in dataAPI) {
-                                        resolve(dataAPI[q]);    
-                                    }
+                    if(FixtureSeason != '') {
+                        var fixtureNumber = [];
+                        request({url: "http://v2.api-football.com/fixtures/league/" + uefaNumber + "/" + FixtureSeason + "?timezone=Asia/Baku", headers: header} , (error,response,body) => {
+                            var fixtureNumbers = [];
+                            if (!error && response.statusCode == 200) {
+                                var data = JSON.parse(body);
+                                var fixtures = data.api.fixtures;
+                                for( var i in fixtures) {
+                                    fixtureNumbers.push(fixtures[i].fixture_id);
                                 }
-                            });
-                        }
+                            }
+                            for(var j in fixtureNumbers) {
+                                var fixtureID = fixtureNumbers[j];
 
-                    });
+                                request({url: "http://v2.api-football.com/predictions/" + fixtureID, headers:header}, (error,response, body) => {
+                                    if (!error && response.statusCode == 200) {
+                                        var data = JSON.parse(body);
+                                        var dataAPI = data.api.predictions;
+                                        var predictions = [];
+                                        for(var q in dataAPI) {
+                                            resolve(dataAPI[q]);    
+                                        }
+                                    }
+                                });
+                            }
+
+                        });
+                    } else {
+                        resolve();
+                        reject();
+                    }
                 }
             });
     });
