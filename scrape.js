@@ -497,7 +497,7 @@ module.exports = function(app) {
 
                         });
                     } else {
-                        resolve();
+                        resolve({});
                         reject();
                     }
                 }
