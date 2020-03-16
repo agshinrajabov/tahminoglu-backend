@@ -188,7 +188,7 @@ app.get('/updatedApi', (req,res) => {
 app.get('/settings', (req,res) => {
     res.json({
         "myBanner": false,
-        "admobBanner": false,
+        "admobBanner": false, 
         "bannerLink": null
     });
 });
