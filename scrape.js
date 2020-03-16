@@ -505,7 +505,7 @@ module.exports = function(app) {
     });
 
     app.get('/predictions', (req,res) => {
-        Promise.all([premier, bundesliga, laliga, seriaA, league1, everdise, ligaPro, superlig, tff, championsLeagu, uefa]).then((result) => {
+        Promise.all([premier, bundesliga, laliga, seriaA, league1, everdise, ligaPro, superlig, tff, championsLeagu]).then((result) => {
             res.json(result);
         });
 
