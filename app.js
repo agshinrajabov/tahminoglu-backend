@@ -13,6 +13,7 @@ var scrape = require('./scrape');
 var app = express();
 var session = require('express-session');
 var Guess = require('./guess-add.js');
+var History = require('./history.js');
 var compression = require('compression');
 
 app.set('view engine', 'hbs');
@@ -128,12 +129,12 @@ app.get('/guess/delete/:id', MatchSessionChecker, function(req,res) {
     });
 });
 
-app.get('/guess/edit/:id', MatchSessionChecker, function(req,res) {
+app.get('/guess/edit/:id',  function(req,res) {
     const id = req.params.id
     //Find By Id
     Guess.findById({_id: id}, (err, data) => {
         if(!err) {
-           return res.render('guess-add', {data: data});
+           return res.render('guess-add', {data: data, editable: 'true'});
         } else {
             console.log(err)
             return res.redirect('/guess')
@@ -146,15 +147,40 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
     //Find By Id
     Guess.findOneAndUpdate({_id: id}, {
         homeTeam: req.body.homeTeam,
+        homeScore: req.body.homeScore,
         guestTeam: req.body.guestTeam,
+        awayScore: req.body.awayScore,
         gameDate: moment(req.body.gameDate).format('DD MMMM'),
         gameStatus: req.body.gender,
         gameHour: req.body.gameHour,
         gameGuess: req.body.gameGuess,
         gameCoefficient: req.body.gameCoefficient,
         gameText: req.body.gameText,
+        gameHistory: req.body.historical,
     }, (err, data) => {
         if(!err) {
+            if(req.body.historical) {
+                var histor = new History({
+                    homeTeam: req.body.homeTeam,
+                    homeScore: req.body.homeScore,
+                    guestTeam: req.body.guestTeam,
+                    awayScore: req.body.awayScore,
+                    gameDate: moment(req.body.gameDate).format('DD MMMM'),
+                    gameStatus: req.body.gender,
+                    gameHour: req.body.gameHour,
+                    gameGuess: req.body.gameGuess,
+                    gameCoefficient: req.body.gameCoefficient,
+                    gameText: req.body.gameText,
+                    gameHistory: req.body.historical,
+                });
+                histor.save((err) => {
+                    if(!err) {
+                        console.log("True");
+                    } else {
+                        console.log(err);
+                    }
+                }) 
+            }
             return res.redirect('/guess')
         } else {
             console.log(err)
@@ -169,6 +195,15 @@ app.get('/live', (req, res) => {
 
 app.get('/api', (req,res) => {
     Guess.find({}, null, {sort: {createdDate: -1}}, (err,data) => {
+        if(err) {
+            throw err;
+        }
+        res.json(data);
+    })
+});
+
+app.get('/histories', (req,res) => {
+    History.find({}, null, {sort: {createdDate: -1}}, (err,data) => {
         if(err) {
             throw err;
         }

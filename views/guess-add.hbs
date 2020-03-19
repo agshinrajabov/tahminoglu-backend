@@ -53,12 +53,29 @@
                                     </div>
 
                                     <div class="input-label">
-                                <label for="dep-team-name">Qonağ komandası
+                                        <label for="dep-team-name">Qonağ komandası
                                             <input id="dep-team-name" type="text" name="guestTeam" value="{{data.guestTeam}}"
                                                 placeholder="Qonağ komandası Nümunə: Real Madrid" required>
                                         </label>
                                     </div>
                                 </div>
+                                {{#if (eq editable 'true')}}
+                                    <div class="input-group">
+                                        <div class="input-label">
+                                            <label for="teamname">Ev Komandası Nəticəsi
+                                                <input id="teamname" type="text" name="homeScore" value="{{data.homeScore}}"
+                                                    placeholder="Nəticə">
+                                            </label>
+                                        </div>
+
+                                        <div class="input-label">
+                                            <label for="dep-team-name">Qonağ Komandası Nəticəsi
+                                                <input id="dep-team-name" type="text" name="awayScore" value="{{data.awayScore}}"
+                                                    placeholder="Nəticə">
+                                            </label>
+                                        </div>
+                                    </div>
+                                {{/if}}
 
                                 <div class="input-group">
                                     <div class="input-label">
@@ -110,6 +127,16 @@
                                         </label>
                                     </div>
                                 </div>
+                                {{#if (eq editable 'true')}}
+                                <br/>
+                                <div class="input-group">
+                                    <div class="input-label">
+                                        <label class="check"  for="pause">Tarixçəyə əlavə edilsin?
+                                            <input class="cbox" id="pause" name="historical" value="true" type="checkbox" checked="true">
+                                        </label class="check">
+                                    </div>
+                                </div>
+                                {{/if}}
                                 <input class="submit" type="submit" value="Göndər">
                             </div>
                         </form>

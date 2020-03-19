@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var guessAddSchema = new Schema({
+var historySchema = new Schema({
     homeTeam: String,
     homeScore: String,
     guestTeam: String,
@@ -16,13 +16,13 @@ var guessAddSchema = new Schema({
     createdDate: Date
 });
 
-guessAddSchema.pre('save', function (next) {
+historySchema.pre('save', function (next) {
     var current = new Date();
     this.createdDate = current;
     next();
 })
 
 
-var guessAddSchema = mongoose.model('Guess', guessAddSchema);
+var history = mongoose.model('History', historySchema);
 
-module.exports = guessAddSchema;
+module.exports = history;
