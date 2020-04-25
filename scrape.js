@@ -37,7 +37,7 @@ module.exports = function(app) {
                     var data = JSON.parse(body);
                     // use data
 
-                    const FixtureSeason = data.api.fixtures.toString();
+                    const FixtureSeason = data.api.fixtures;
                     var fixtureNumber = [];
                     request({url: "http://v2.api-football.com/fixtures/league/" + premierLeague + "/" + FixtureSeason + "?timezone=Asia/Baku", headers: header} , (error,response,body) => {
                         var fixtureNumbers = [];
@@ -81,7 +81,7 @@ module.exports = function(app) {
                     var data = JSON.parse(body);
                     // use data
 
-                    const FixtureSeason = data.api.fixtures.toString();
+                    const FixtureSeason = data.api.fixtures;
                     var fixtureNumber = [];
                     request({url: "http://v2.api-football.com/fixtures/league/" + bundesligaNumber + "/" + FixtureSeason + "?timezone=Asia/Baku", headers: header} , (error,response,body) => {
                         var fixtureNumbers = [];
@@ -124,7 +124,7 @@ module.exports = function(app) {
                     var data = JSON.parse(body);
                     // use data
 
-                    const FixtureSeason = data.api.fixtures.toString();
+                    const FixtureSeason = data.api.fixtures;
                     var fixtureNumber = [];
                     request({url: "http://v2.api-football.com/fixtures/league/" + laligaNumber + "/" + FixtureSeason + "?timezone=Asia/Baku", headers: header} , (error,response,body) => {
                         var fixtureNumbers = [];
@@ -167,7 +167,7 @@ module.exports = function(app) {
                     var data = JSON.parse(body);
                     // use data
 
-                    const FixtureSeason = data.api.fixtures.toString();
+                    const FixtureSeason = data.api.fixtures;
                     var fixtureNumber = [];
                     request({url: "http://v2.api-football.com/fixtures/league/" + serieANumber + "/" + FixtureSeason + "?timezone=Asia/Baku", headers: header} , (error,response,body) => {
                         var fixtureNumbers = [];
@@ -210,7 +210,7 @@ module.exports = function(app) {
                     var data = JSON.parse(body);
                     // use data
 
-                    const FixtureSeason = data.api.fixtures.toString();
+                    const FixtureSeason = data.api.fixtures;
                     var fixtureNumber = [];
                     request({url: "http://v2.api-football.com/fixtures/league/" + league1Number + "/" + FixtureSeason + "?timezone=Asia/Baku", headers: header} , (error,response,body) => {
                         var fixtureNumbers = [];
@@ -253,7 +253,7 @@ module.exports = function(app) {
                     var data = JSON.parse(body);
                     // use data
 
-                    const FixtureSeason = data.api.fixtures.toString();
+                    const FixtureSeason = data.api.fixtures;
                     var fixtureNumber = [];
                     request({url: "http://v2.api-football.com/fixtures/league/" + everdiseNumber + "/" + FixtureSeason + "?timezone=Asia/Baku", headers: header} , (error,response,body) => {
                         var fixtureNumbers = [];
@@ -296,7 +296,7 @@ module.exports = function(app) {
                     var data = JSON.parse(body);
                     // use data
 
-                    const FixtureSeason = data.api.fixtures.toString();
+                    const FixtureSeason = data.api.fixtures;
                     var fixtureNumber = [];
                     request({url: "http://v2.api-football.com/fixtures/league/" + ligaproNumber + "/" + FixtureSeason + "?timezone=Asia/Baku", headers: header} , (error,response,body) => {
                         var fixtureNumbers = [];
@@ -339,7 +339,7 @@ module.exports = function(app) {
                     var data = JSON.parse(body);
                     // use data
 
-                    const FixtureSeason = data.api.fixtures.toString();
+                    const FixtureSeason = data.api.fixtures;
                     var fixtureNumber = [];
                     request({url: "http://v2.api-football.com/fixtures/league/" + superligNumber + "/" + FixtureSeason + "?timezone=Asia/Baku", headers: header} , (error,response,body) => {
                         var fixtureNumbers = [];
@@ -382,7 +382,7 @@ module.exports = function(app) {
                     var data = JSON.parse(body);
                     // use data
 
-                    const FixtureSeason = data.api.fixtures.toString();
+                    const FixtureSeason = data.api.fixtures;
                     var fixtureNumber = [];
                     request({url: "http://v2.api-football.com/fixtures/league/" + tffNumber + "/" + FixtureSeason + "?timezone=Asia/Baku", headers: header} , (error,response,body) => {
                         var fixtureNumbers = [];
@@ -425,7 +425,7 @@ module.exports = function(app) {
                     var data = JSON.parse(body);
                     // use data
 
-                    const FixtureSeason = data.api.fixtures.toString();
+                    const FixtureSeason = data.api.fixtures;
                     var fixtureNumber = [];
                     request({url: "http://v2.api-football.com/fixtures/league/" + championsLeagueNumber + "/" + FixtureSeason + "?timezone=Asia/Baku", headers: header} , (error,response,body) => {
                         var fixtureNumbers = [];
@@ -468,7 +468,7 @@ module.exports = function(app) {
                     var data = JSON.parse(body);
                     // use data
                     
-                    const FixtureSeason = data.api.fixtures.toString();
+                    const FixtureSeason = data.api.fixtures;
                     if(FixtureSeason != '') {
                         var fixtureNumber = [];
                         request({url: "http://v2.api-football.com/fixtures/league/" + uefaNumber + "/" + FixtureSeason + "?timezone=Asia/Baku", headers: header} , (error,response,body) => {
