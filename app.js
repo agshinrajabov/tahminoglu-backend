@@ -224,7 +224,7 @@ app.get('/settings', (req,res) => {
     res.json({
         "myBanner": false,
         "admobBanner": true, 
-        "bannerLink": null,
+        "bannerLink": "",
         "androidVersion": "1.0.4",
         "iosVersion": "1.2.0",
         "androidLink": "https://play.google.com/store/apps/details?id=com.tahmindev.tahminoglu",
