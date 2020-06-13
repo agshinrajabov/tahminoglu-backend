@@ -1,21 +1,19 @@
-var express = require('express');
-var exphbs  = require('express3-handlebars');
-var path = require('path');
-var moment = require('moment');
-var bodyParser = require('body-parser')
+var express          = require('express');
+var path             = require('path');
+var moment           = require('moment');
+var bodyParser       = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
-var mongoDB = require('./expressMongoDB');
-var helper = require('./helper');
-var makeImage = require('./make-image');
-var telegram = require('./telegram');
-var liveJSON = require('./live.json');
-var scrape = require('./scrape');
-var app = express();
-var session = require('express-session');
-var Guess = require('./guess-add.js');
-var History = require('./history.js');
-var compression = require('compression');
+var helper           = require('./helper');
+var makeImage        = require('./make-image');
+var telegram         = require('./telegram');
+var scrape           = require('./scrape');
+var session          = require('express-session');
+var Guess            = require('./guess-add.js');
+var History          = require('./history.js');
+var compression      = require('compression');
+var app              = express();
 
+require('./expressMongoDB');
 app.set('view engine', 'hbs');
 app.engine('hbs', helper.engine);
 app.set('views', path.join(__dirname, 'views'));
@@ -49,15 +47,15 @@ const MatchSessionChecker = (req, res, next) => {
     }
 };
 
-app.get('/home', function (req, res) {
+app.get('/home', function (_, res) {
     res.render('home');
 });
 
-app.get('/privacy', function (req, res) {
+app.get('/privacy', function (_, res) {
     res.render('privacy');
 });
 
-app.get('/', sessionChecker, function (req, res) {
+app.get('/', sessionChecker, function (_, res) {
     res.render('login');
 });
 
@@ -68,19 +66,19 @@ app.post('/', urlencodedParser, function(req,res) {
     
     if(user == login.username && pass == login.password) {
         req.session.loggedin = true;
-        req.session.user = user;
-        req.session.role = 1;
+        req.session.user     = user;
+        req.session.role     = 1;
         return res.redirect('/home');
     } else {
        return res.render('login', {alert: "Daxil etdiyiniz istifadəçi adı və ya şifrə yanlışdır."});
     }
 });
 
-app.get('/notification', function (req, res) {
+app.get('/notification', function (_, res) {
     res.render('notification');
 });
 
-app.get('/guess', MatchSessionChecker, function (req, res) {
+app.get('/guess', MatchSessionChecker, function (_, res) {
     Guess.find({}, (err,data) => {
         if(err) {
             throw err;
@@ -89,20 +87,22 @@ app.get('/guess', MatchSessionChecker, function (req, res) {
     });
 });
 
-app.get('/guess-add', MatchSessionChecker, function (req, res) {
+app.get('/guess-add', MatchSessionChecker, function (_, res) {
     res.render('guess-add');
 });
 
 app.post('/guess-add', urlencodedParser, function (req, res) {
    var newGuess = new Guess({
-        homeTeam: req.body.homeTeam,
-        guestTeam: req.body.guestTeam,
-        gameDate: moment(req.body.gameDate).format('DD MMMM'),
-        gameStatus: req.body.gender,
-        gameHour: req.body.gameHour,
-        gameGuess: req.body.gameGuess,
+        homeTeam       : req.body.homeTeam,
+        guestTeam      : req.body.guestTeam,
+        gameDate       : moment(req.body.gameDate).format('DD MMMM'),
+        gameStatus     : req.body.gender,
+        gameHour       : req.body.gameHour,
+        gameGuess      : req.body.gameGuess,
+        gameToken      : req.body.gameToken,
         gameCoefficient: req.body.gameCoefficient,
-        gameText: req.body.gameText,
+        gameText       : req.body.gameText,
+        gameCategory   : req.body.category,
     });
     makeImage(moment(req.body.gameDate).format('DD MMMM'), req.body.gameHour, req.body.homeTeam, req.body.guestTeam, req.body.gameCoefficient);
     newGuess.save((err) => {
@@ -120,7 +120,7 @@ app.get('/guess/delete/:id', MatchSessionChecker, function(req,res) {
     const id = req.params.id
     //Find By Id
     Guess.findOneAndRemove({_id: id}, (err, data) => {
-        if(!err) {
+        if(!err && data != null) {
             return res.redirect('/guess')
         } else {
             console.log(err)
@@ -146,32 +146,36 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
     const id = req.params.id
     //Find By Id
     Guess.findOneAndUpdate({_id: id}, {
-        homeTeam: req.body.homeTeam,
-        homeScore: req.body.homeScore,
-        guestTeam: req.body.guestTeam,
-        awayScore: req.body.awayScore,
-        gameDate: moment(req.body.gameDate).format('DD MMMM'),
-        gameStatus: req.body.gender,
-        gameHour: req.body.gameHour,
-        gameGuess: req.body.gameGuess,
+        homeTeam       : req.body.homeTeam,
+        homeScore      : req.body.homeScore,
+        guestTeam      : req.body.guestTeam,
+        awayScore      : req.body.awayScore,
+        gameDate       : moment(req.body.gameDate).format('DD MMMM'),
+        gameStatus     : req.body.gender,
+        gameHour       : req.body.gameHour,
+        gameGuess      : req.body.gameGuess,
+        gameToken      : req.body.gameToken,
         gameCoefficient: req.body.gameCoefficient,
-        gameText: req.body.gameText,
-        gameHistory: req.body.historical,
+        gameText       : req.body.gameText,
+        gameCategory   : req.body.category,
+        gameHistory    : req.body.historical,
     }, (err, data) => {
         if(!err) {
             if(req.body.historical) {
                 var histor = new History({
-                    homeTeam: req.body.homeTeam,
-                    homeScore: req.body.homeScore,
-                    guestTeam: req.body.guestTeam,
-                    awayScore: req.body.awayScore,
-                    gameDate: moment(req.body.gameDate).format('DD MMMM'),
-                    gameStatus: req.body.gender,
-                    gameHour: req.body.gameHour,
-                    gameGuess: req.body.gameGuess,
+                    homeTeam       : req.body.homeTeam,
+                    homeScore      : req.body.homeScore,
+                    guestTeam      : req.body.guestTeam,
+                    awayScore      : req.body.awayScore,
+                    gameDate       : moment(req.body.gameDate).format('DD MMMM'),
+                    gameStatus     : req.body.gender,
+                    gameHour       : req.body.gameHour,
+                    gameGuess      : req.body.gameGuess,
+                    gameToken      : req.body.gameToken,
                     gameCoefficient: req.body.gameCoefficient,
-                    gameText: req.body.gameText,
-                    gameHistory: req.body.historical,
+                    gameText       : req.body.gameText,
+                    gameCategory   : req.body.category,
+                    gameHistory    : req.body.historical,
                 });
                 histor.save((err) => {
                     if(!err) {
@@ -189,11 +193,7 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
     });
 });
 
-app.get('/live', (req, res) => {
-    res.json(liveJSON);
-})
-
-app.get('/api', (req,res) => {
+app.get('/api', (_,res) => {
     Guess.find({}, null, {sort: {createdDate: -1}}, (err,data) => {
         if(err) {
             throw err;
@@ -202,7 +202,7 @@ app.get('/api', (req,res) => {
     })
 });
 
-app.get('/histories', (req,res) => {
+app.get('/histories', (_,res) => {
     History.find({}, null, {sort: {createdDate: -1}}, (err,data) => {
         if(err) {
             throw err;
@@ -211,7 +211,7 @@ app.get('/histories', (req,res) => {
     })
 });
 
-app.get('/updatedApi', (req,res) => {
+app.get('/updatedApi', (_,res) => {
     Guess.find({}, null, {sort: {createdDate: -1}}, (err,data) => {
         if(err) {
             throw err;
@@ -220,23 +220,22 @@ app.get('/updatedApi', (req,res) => {
     }).where('gameStatus').equals(1);
 });
 
-app.get('/settings', (req,res) => {
+app.get('/settings', (_,res) => {
     res.json({
-        "myBanner": false,
-        "admobBanner": true, 
-        "bannerLink": "",
+        "myBanner"      : false,
+        "admobBanner"   : true,
+        "bannerLink"    : "",
         "androidVersion": "1.0.4",
-        "iosVersion": "1.2.0",
-        "androidLink": "https://play.google.com/store/apps/details?id=com.tahmindev.tahminoglu",
-        "iosLink": "https://apps.apple.com/az/app/tahmino%C4%9Flu-i-ddaa-tahminleri/id1496838071",
+        "iosVersion"    : "1.2.0",
+        "androidLink"   : "https://play.google.com/store/apps/details?id=com.tahmindev.tahminoglu",
+        "iosLink"       : "https://apps.apple.com/az/app/tahmino%C4%9Flu-i-ddaa-tahminleri/id1496838071",
     });
 });
 
-
-app.get('/link', function (req, res) {
+app.get('/link', function (_, res) {
     res.render('link');
 });
 
 scrape(app);
- 
+
 app.listen(process.env.PORT || 4949);

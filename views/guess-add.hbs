@@ -54,42 +54,67 @@
 
                                     <div class="input-label">
                                         <label for="dep-team-name">Qonağ komandası
-                                            <input id="dep-team-name" type="text" name="guestTeam" value="{{data.guestTeam}}"
+                                            <input id="dep-team-name" type="text" name="guestTeam"
+                                                value="{{data.guestTeam}}"
                                                 placeholder="Qonağ komandası Nümunə: Real Madrid" required>
                                         </label>
                                     </div>
                                 </div>
                                 {{#if (eq editable 'true')}}
-                                    <div class="input-group">
-                                        <div class="input-label">
-                                            <label for="teamScore">Ev Komandası Nəticəsi
-                                                <input id="teamScore" type="text" name="homeScore" value="{{data.homeScore}}"
-                                                    placeholder="Nəticə">
-                                            </label>
-                                        </div>
-
-                                        <div class="input-label">
-                                            <label for="dep-team-score">Qonağ Komandası Nəticəsi
-                                                <input id="dep-team-score" type="text" name="awayScore" value="{{data.awayScore}}"
-                                                    placeholder="Nəticə">
-                                            </label>
-                                        </div>
+                                <div class="input-group">
+                                    <div class="input-label">
+                                        <label for="teamScore">Ev Komandası Nəticəsi
+                                            <input id="teamScore" type="text" name="homeScore"
+                                                value="{{data.homeScore}}" placeholder="Nəticə">
+                                        </label>
                                     </div>
+
+                                    <div class="input-label">
+                                        <label for="dep-team-score">Qonağ Komandası Nəticəsi
+                                            <input id="dep-team-score" type="text" name="awayScore"
+                                                value="{{data.awayScore}}" placeholder="Nəticə">
+                                        </label>
+                                    </div>
+                                </div>
                                 {{/if}}
 
                                 <div class="input-group">
                                     <div class="input-label">
-                                        <label class="check"  for="pause">Gözləmədə
-                                            <input class="cbox" id="pause" name="gender" value="0" required type="radio" checked>
+                                        <label class="check" for="pause">Gözləmədə
+                                            <input class="cbox" id="pause" name="gender" value="0" required type="radio"
+                                                checked>
                                         </label class="check">
- 
+
                                         <label class="check" for="true">Tutdu
-                                            <input class="cbox" id="true" name="gender" value="1" required type="radio" {{#if (eq data.gameStatus 1)}} checked {{/if}}>
+                                            <input class="cbox" id="true" name="gender" value="1" required type="radio"
+                                                {{#if (eq data.gameStatus 1)}} checked {{/if}}>
                                         </label>
-    
+
                                         <label class="check" for="false">Tutmadı
-                                            <input class="cbox" id="false" name="gender" value="2" required type="radio"{{#if (eq data.gameStatus 1)}} checked {{/if}}>
+                                            <input class="cbox" id="false" name="gender" value="2" required type="radio"
+                                                {{#if (eq data.gameStatus 1)}} checked {{/if}}>
                                         </label>
+                                    </div>
+                                    <div class="input-label">
+                                        <label class="check" for="category">Kategori<br />
+                                            <select name="category" id="category"
+                                                style="margin:0 !important; padding: 0 !important; margin-top:10px !important">
+                                                <option {{#if (eq data.gameCategory 'Futbol')}} selected {{/if}}
+                                                    value="Futbol">Futbol</option>
+                                                <option {{#if (eq data.gameCategory 'Basketbol')}} selected {{/if}}
+                                                    value="Basketbol">Basketbol</option>
+                                                <option {{#if (eq data.gameCategory 'Voleybol')}} selected {{/if}}
+                                                    value="Voleybol">Voleybol</option>
+                                                <option {{#if (eq data.gameCategory 'Tenis')}} selected {{/if}}
+                                                    value="Tenis">Tenis</option>
+                                                <option {{#if (eq data.gameCategory 'Masa Tenisi')}} selected {{/if}}
+                                                    value="Masa Tenisi">Masa Tenisi</option>
+                                                <option {{#if (eq data.gameCategory 'Beyzbol')}} selected {{/if}}
+                                                    value="Beyzbol">Beyzbol</option>
+                                                <option {{#if (eq data.gameCategory 'Buz Hokeyi')}} selected {{/if}}
+                                                    value="Buz Hokeyi">Buz Hokeyi</option>
+                                            </select>
+                                        </label class="check">
                                     </div>
                                 </div>
 
@@ -102,7 +127,8 @@
 
                                     <div class="input-label">
                                         <label for="matchhour">Oyun saatı
-                                            <input id="matchhour" name="gameHour" type="text" placeholder="22:00" value="{{data.gameHour}}" required>
+                                            <input id="matchhour" name="gameHour" type="text" placeholder="22:00"
+                                                value="{{data.gameHour}}" required>
                                         </label>
                                     </div>
                                 </div>
@@ -110,29 +136,48 @@
                                 <div class="input-group">
                                     <div class="input-label">
                                         <label for="">Təxmin
-                                            <input type="text" name="gameGuess" placeholder="Təxminin nədir?" value="{{data.gameGuess}}"  required>
+                                            <input type="text" name="gameGuess" placeholder="Təxminin nədir?"
+                                                value="{{data.gameGuess}}" required>
                                         </label>
                                     </div>
 
                                     <div class="input-label">
                                         <label for="">Təxmin əmsalı
-                                            <input type="text" name="gameCoefficient" placeholder="Təxmin əmsalı" value="{{data.gameCoefficient}}"  required>
+                                            <input type="text" name="gameCoefficient" placeholder="Təxmin əmsalı"
+                                                value="{{data.gameCoefficient}}" required>
                                         </label>
                                     </div>
                                 </div>
+
                                 <div class="input-group">
                                     <div class="input-label">
-                                         <label for="notText">Təxmin şərhi (əgər yoxdursa, boş burax)
-                                            <textarea required name="gameText" id="notText" cols="3" rows="7" style="width:100%; resize:none">{{data.gameText}}</textarea>
+                                        <label for="">Jeton
+                                            <input type="number" name="gameToken" placeholder="Nə qədər jetona satılsın?"
+                                                value="{{data.gameToken}}" required>
+                                        </label>
+                                    </div>
+
+                                    <div class="input-label">
+                                        
+                                    </div>
+                                </div>
+
+
+                                <div class="input-group">
+                                    <div class="input-label">
+                                        <label for="notText">Təxmin şərhi (əgər yoxdursa, boş burax)
+                                            <textarea required name="gameText" id="notText" cols="3" rows="7"
+                                                style="width:100%; resize:none">{{data.gameText}}</textarea>
                                         </label>
                                     </div>
                                 </div>
                                 {{#if (eq editable 'true')}}
-                                <br/>
+                                <br />
                                 <div class="input-group">
                                     <div class="input-label">
-                                        <label class="check"  for="historyical">Tarixçəyə əlavə edilsin?
-                                            <input class="cbox" id="historyical" name="historical" value="true" type="checkbox" checked="true">
+                                        <label class="check" for="historyical">Tarixçəyə əlavə edilsin?
+                                            <input class="cbox" id="historyical" name="historical" value="true"
+                                                type="checkbox" checked="true">
                                         </label class="check">
                                     </div>
                                 </div>

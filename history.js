@@ -10,7 +10,9 @@ var historySchema = new Schema({
     gameStatus: Number,
     gameHour: String,
     gameGuess: String,
+    gameToken: Number,
     gameCoefficient: String,
+    gameCategory: String,
     gameText: String,
     gameHistory: String,
     createdDate: Date
