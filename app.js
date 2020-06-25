@@ -78,7 +78,7 @@ function sendAndroidNotification(title, message, token){
           'Content-Type': 'application/json',
           'Authorization': 'key=AAAA3buZblE:APA91bFLjxyAtmpfhi7OEI64MASfTZU1mQGiPVB-TZa5qcVSOSCdS08ox1l3cdrTF4ScTky6T7n3E-83pBUeQO8p9tHsvKwJ_taGqYhp9wGbVsxAqHlDBdl121jdmG9AK-ce0JZ2PAbP'
         },
-        body: JSON.stringify({"notification":{"title":title.toString(),"body":message.toString()},"data":{"click_action":"FLUTTER_NOTIFICATION_CLICK","type":"COMMENT"},"to":token.toString()})
+        body: JSON.stringify({"notification":{"title":title,"body":message},"data":{"click_action":"FLUTTER_NOTIFICATION_CLICK","type":"COMMENT"},"to":token})
       
       };
     request(options, function (error, response) {
@@ -99,7 +99,7 @@ function sendiOSNotification(title, message, token){
           'Content-Type': 'application/json',
           'Authorization': 'key=AAAAt1vyJPo:APA91bG0GFz5DVB33S0U42aEE-nuRZklGDYLz6loffiPXjMuLuNusVlXu71bPmB97de_Fbz0P8z2H_CtYCNR2ZCjWtOhzzPtbLEOwVA13jaPLj-NcMLD_s7w87uWJtNUdFe80tyvJ1Yw'
         },
-        body: JSON.stringify({"notification":{"title":title.toString(),"body":message.toString()},"data":{"click_action":"FLUTTER_NOTIFICATION_CLICK","type":"COMMENT"},"to":token.toString()})
+        body: JSON.stringify({"notification":{"title":title,"body":message},"data":{"click_action":"FLUTTER_NOTIFICATION_CLICK","type":"COMMENT"},"to":token})
       
       };
     request(options, function (error, response) {
