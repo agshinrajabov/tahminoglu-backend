@@ -246,18 +246,42 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
     const id = req.params.id
 
     if(req.body.homeScore != null && req.body.awayScore != null) {
-        var options = {
-            'method': 'POST',
-    //      'url': 'https://www.instagram.com/web/comments/like/17844851105238297/',
-            'url': 'https://i.instagram.com/api/v1/media/2338547693443402289/comment/',
-            formData: {
-              'comment_text': 'Tahminoğlu uygulamasına günün süpriz🔥tahminleri eklenmiştir. Oynayan herkese başarılar🤑 iOS & Android indir @tahminogluapp'
-            }
+        var iosOptions = {
+            'method': 'GET',
+            'url': 'http://tahminoglu.com/iosnotifications',
           };
-          request(options, function (error, response) {
+          request(iosOptions, function (error, response) {
             if (error) throw new Error(error);
-            console.log(response.statusMessage);
-            console.log("_____________");
+            var iosNotiifcationList = JSON.parse(response.body);
+            var homeName = req.body.homeTeam;
+            var awayName = req.body.guestTeam;
+            var fullTeamNames = homeName + " - " + awayName;
+    
+            var list = iosNotiifcationList.filter(element => element['match'] == fullTeamNames);
+
+            for(var match in list) {
+                sendiOSNotification("Tebrikler!", "Yaptığımız" + fullTeamNames + " maçı tahmini kazanmıştır! 😍", match['token']);
+            }
+    
+          });
+
+          var androidOptions = {
+            'method': 'GET',
+            'url': 'http://tahminoglu.com/androidnotifications',
+          };
+          request(androidOptions, function (error, response) {
+            if (error) throw new Error(error);
+            var androidNotificationList = JSON.parse(response.body);
+            var homeName = req.body.homeTeam;
+            var awayName = req.body.guestTeam;
+            var fullTeamNames = homeName + " - " + awayName;
+    
+            var androidList = androidNotificationList.filter(element => element['match'] == fullTeamNames);
+
+            for(var mat in androidList) {
+                sendAndroidNotification("Tebrikler!", "Yaptığımız" + fullTeamNames + " maçı tahmini kazanmıştır! 😍", mat['token']);
+            }
+    
           });
     }
     //Find By Id
