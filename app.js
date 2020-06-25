@@ -33,6 +33,7 @@ var androidNotificationList = new Promise((resolve, reject) => {
     });
 }); 
 
+
 app.get('/iosnotifications', (_,res) => {
     Promise.all([androidNotificationList]).then((result) => {
 
@@ -92,6 +93,9 @@ function sendAndroidNotification(title, message, token){
 
 
 function sendiOSNotification(title, message, token){
+    console.log(title);
+    console.log(message);
+    console.log(token);
     var options = {
         'method': 'POST',
         'url': 'https://fcm.googleapis.com/fcm/send',
@@ -110,7 +114,6 @@ function sendiOSNotification(title, message, token){
         console.log("_____________");
     });
 }
-
 
 
 //Admin Login
