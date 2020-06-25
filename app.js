@@ -29,38 +29,87 @@ var androidNotificationList = new Promise((resolve, reject) => {
     };
     request(options, function (error, response) {
         if (error) throw new Error(error);
-        var list = JSON.parse(response.body);
-        resolve(list);
+        resolve(response.body);
     });
-});
+}); 
 
-
-    
-
-app.get('/test', (_,res) => {
-
+app.get('/iosnotifications', (_,res) => {
     Promise.all([androidNotificationList]).then((result) => {
-        var androidList = result;
-
 
         var options = {
             'method': 'GET',        
             'url': 'https://tahminoglu-6b712.firebaseio.com/notifications.json',
             };
-            request(options, function (error, response) {
-                if (error) throw new Error(error);
-                var allNotifications = [];
-                var iosList = JSON.parse(response.body);
-                for(var item in iosList) {
-                    console.log(iosList[item]);
+        request(options, function (error, response) {
+            if (error) throw new Error(error);
+            var iosNotifications = [];
+            var iosList = JSON.parse(response.body);
+
+
+            for(var item in iosList) {
+                for(var val in iosList[item]) {
+                    iosNotifications.push(iosList[item][val]);
                 }
-            });
-
-
+            }
+            res.send(iosNotifications);
+        });
     });
-
 });
 
+app.get('/androidnotifications', (_,res) => {
+    Promise.all([androidNotificationList]).then((result) => {
+        var androidList = JSON.parse(result);
+        var androidNotifications = [];
+        for(var atem in androidList) {
+            for(var val in androidList[atem]) {
+                androidNotifications.push(androidList[atem][val]);
+            }
+        }
+        res.send(androidNotifications);
+    });
+});
+
+
+function sendAndroidNotification(title, message, token){
+    var options = {
+        'method': 'POST',
+        'url': 'https://fcm.googleapis.com/fcm/send',
+        'headers': {
+          'Content-Type': 'application/json',
+          'Authorization': 'key=AAAA3buZblE:APA91bFLjxyAtmpfhi7OEI64MASfTZU1mQGiPVB-TZa5qcVSOSCdS08ox1l3cdrTF4ScTky6T7n3E-83pBUeQO8p9tHsvKwJ_taGqYhp9wGbVsxAqHlDBdl121jdmG9AK-ce0JZ2PAbP'
+        },
+        body: JSON.stringify({"notification":{"title":title.toString(),"body":message.toString()},"data":{"click_action":"FLUTTER_NOTIFICATION_CLICK","type":"COMMENT"},"to":token.toString()})
+      
+      };
+    request(options, function (error, response) {
+        if (error) throw new Error(error);
+        console.log(response.body);
+        console.log(response.statusCode);
+        console.log(response.statusMessage);
+        console.log("_____________");
+    });
+}
+
+
+function sendiOSNotification(title, message, token){
+    var options = {
+        'method': 'POST',
+        'url': 'https://fcm.googleapis.com/fcm/send',
+        'headers': {
+          'Content-Type': 'application/json',
+          'Authorization': 'key=AAAAt1vyJPo:APA91bG0GFz5DVB33S0U42aEE-nuRZklGDYLz6loffiPXjMuLuNusVlXu71bPmB97de_Fbz0P8z2H_CtYCNR2ZCjWtOhzzPtbLEOwVA13jaPLj-NcMLD_s7w87uWJtNUdFe80tyvJ1Yw'
+        },
+        body: JSON.stringify({"notification":{"title":title.toString(),"body":message.toString()},"data":{"click_action":"FLUTTER_NOTIFICATION_CLICK","type":"COMMENT"},"to":token.toString()})
+      
+      };
+    request(options, function (error, response) {
+        if (error) throw new Error(error);
+        console.log(response.body);
+        console.log(response.statusCode);
+        console.log(response.statusMessage);
+        console.log("_____________");
+    });
+}
 
 
 
