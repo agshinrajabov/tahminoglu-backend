@@ -283,7 +283,7 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
 
             for(var mat in androidList) {
                 sendAndroidNotification("Tebrikler!", "Yaptığımız " + fullTeamNames + " maçı tahmini kazanmıştır! 😍", androidList[mat]['token']);
-            }Əhləmdülillah
+            }
     
           });
     }
