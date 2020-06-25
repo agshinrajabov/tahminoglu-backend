@@ -63,6 +63,10 @@ app.get('/login', sessionChecker, function (_, res) {
     res.render('login');
 });
 
+app.get('/terms', sessionChecker, function (_, res) {
+    res.render('terms');
+});
+
 app.post('/login', urlencodedParser, function(req,res) {
 
     var user = req.body.username;
