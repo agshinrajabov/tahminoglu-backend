@@ -268,6 +268,8 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
     
           });
 
+          //Şahbaz: Əhləmdulillah
+
           var androidOptions = {
             'method': 'GET',
             'url': 'http://tahminoglu.com/androidnotifications',
