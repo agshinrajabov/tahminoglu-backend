@@ -245,7 +245,7 @@ app.get('/guess/edit/:id',  function(req,res) {
 app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
     const id = req.params.id
 
-    if(req.body.homeScore != null && req.body.awayScore != null) {
+    if(req.body.gender == 1) {
         var iosOptions = {
             'method': 'GET',
             'url': 'http://tahminoglu.com/iosnotifications',
