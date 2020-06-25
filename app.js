@@ -263,7 +263,7 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
             var list = iosNotiifcationList.filter(element => element['match'] == fullTeamNames);
 
             for(var match in list) {
-                sendiOSNotification("Tebrikler!", "Yaptığımız" + fullTeamNames + " maçı tahmini kazanmıştır! 😍", match['token']);
+                sendiOSNotification("Tebrikler!", "Yaptığımız " + fullTeamNames + " maçı tahmini kazanmıştır! 😍", list[match]['token']);
             }
     
           });
@@ -282,8 +282,8 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
             var androidList = androidNotificationList.filter(element => element['match'] == fullTeamNames);
 
             for(var mat in androidList) {
-                sendAndroidNotification("Tebrikler!", "Yaptığımız" + fullTeamNames + " maçı tahmini kazanmıştır! 😍", mat['token']);
-            }
+                sendAndroidNotification("Tebrikler!", "Yaptığımız " + fullTeamNames + " maçı tahmini kazanmıştır! 😍", androidList[mat]['token']);
+            }Əhləmdülillah
     
           });
     }
