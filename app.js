@@ -11,6 +11,7 @@ var session          = require('express-session');
 var Guess            = require('./guess-add.js');
 var History          = require('./history.js');
 var compression      = require('compression');
+var request          = require('request');
 var app              = express();
 
 require('./expressMongoDB');
@@ -20,6 +21,48 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/assets', express.static(path.join(__dirname, 'dist')))
 app.use(session({secret: 'secret', resave: true,saveUninitialized: true}));
 app.use(compression());
+
+var androidNotificationList = new Promise((resolve, reject) => {
+    var options = {
+    'method': 'GET',        
+    'url': 'https://tahminoglu-banko-maclar.firebaseio.com/notifications.json',
+    };
+    request(options, function (error, response) {
+        if (error) throw new Error(error);
+        var list = JSON.parse(response.body);
+        resolve(list);
+    });
+});
+
+
+    
+
+app.get('/test', (_,res) => {
+
+    Promise.all([androidNotificationList]).then((result) => {
+        var androidList = result;
+
+
+        var options = {
+            'method': 'GET',        
+            'url': 'https://tahminoglu-6b712.firebaseio.com/notifications.json',
+            };
+            request(options, function (error, response) {
+                if (error) throw new Error(error);
+                var allNotifications = [];
+                var iosList = JSON.parse(response.body);
+                for(var item in iosList) {
+                    console.log(iosList[item]);
+                }
+            });
+
+
+    });
+
+});
+
+
+
 
 //Admin Login
 const login = {
@@ -152,6 +195,22 @@ app.get('/guess/edit/:id',  function(req,res) {
 
 app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
     const id = req.params.id
+
+    if(req.body.homeScore != null && req.body.awayScore != null) {
+        var options = {
+            'method': 'POST',
+    //      'url': 'https://www.instagram.com/web/comments/like/17844851105238297/',
+            'url': 'https://i.instagram.com/api/v1/media/2338547693443402289/comment/',
+            formData: {
+              'comment_text': 'Tahminoğlu uygulamasına günün süpriz🔥tahminleri eklenmiştir. Oynayan herkese başarılar🤑 iOS & Android indir @tahminogluapp'
+            }
+          };
+          request(options, function (error, response) {
+            if (error) throw new Error(error);
+            console.log(response.statusMessage);
+            console.log("_____________");
+          });
+    }
     //Find By Id
     Guess.findOneAndUpdate({_id: id}, {
         homeTeam       : req.body.homeTeam,
