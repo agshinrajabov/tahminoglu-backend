@@ -43,7 +43,7 @@ const MatchSessionChecker = (req, res, next) => {
             next();
         }
     } else {
-        res.redirect('/');
+        res.redirect('/login');
     }
 };
 
@@ -55,11 +55,15 @@ app.get('/privacy', function (_, res) {
     res.render('privacy');
 });
 
-app.get('/', sessionChecker, function (_, res) {
+app.get('/', function (_, res) {
+    res.render('link');
+});
+
+app.get('/login', sessionChecker, function (_, res) {
     res.render('login');
 });
 
-app.post('/', urlencodedParser, function(req,res) {
+app.post('/login', urlencodedParser, function(req,res) {
 
     var user = req.body.username;
     var pass = req.body.userpassword;
