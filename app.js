@@ -24,8 +24,8 @@ app.use(compression());
 
 var androidNotificationList = new Promise((resolve, reject) => {
     var options = {
-    'method': 'GET',        
-    'url': 'https://tahminoglu-banko-maclar.firebaseio.com/notifications.json',
+    'method': 'GET',
+    'url'   : 'https://tahminoglu-banko-maclar.firebaseio.com/notifications.json',
     };
     request(options, function (error, response) {
         if (error) throw new Error(error);
@@ -38,13 +38,13 @@ app.get('/iosnotifications', (_,res) => {
     Promise.all([androidNotificationList]).then((result) => {
 
         var options = {
-            'method': 'GET',        
-            'url': 'https://tahminoglu-6b712.firebaseio.com/notifications.json',
+            'method': 'GET',
+            'url'   : 'https://tahminoglu-6b712.firebaseio.com/notifications.json',
             };
         request(options, function (error, response) {
             if (error) throw new Error(error);
             var iosNotifications = [];
-            var iosList = JSON.parse(response.body);
+            var iosList          = JSON.parse(response.body);
 
 
             for(var item in iosList) {
@@ -59,7 +59,7 @@ app.get('/iosnotifications', (_,res) => {
 
 app.get('/androidnotifications', (_,res) => {
     Promise.all([androidNotificationList]).then((result) => {
-        var androidList = JSON.parse(result);
+        var androidList          = JSON.parse(result);
         var androidNotifications = [];
         for(var atem in androidList) {
             for(var val in androidList[atem]) {
@@ -73,10 +73,10 @@ app.get('/androidnotifications', (_,res) => {
 
 function sendAndroidNotification(title, message, token){
     var options = {
-        'method': 'POST',
-        'url': 'https://fcm.googleapis.com/fcm/send',
+        'method' : 'POST',
+        'url'    : 'https://fcm.googleapis.com/fcm/send',
         'headers': {
-          'Content-Type': 'application/json',
+          'Content-Type' : 'application/json',
           'Authorization': 'key=AAAA3buZblE:APA91bFLjxyAtmpfhi7OEI64MASfTZU1mQGiPVB-TZa5qcVSOSCdS08ox1l3cdrTF4ScTky6T7n3E-83pBUeQO8p9tHsvKwJ_taGqYhp9wGbVsxAqHlDBdl121jdmG9AK-ce0JZ2PAbP'
         },
         body: JSON.stringify({"notification":{"title":title,"body":message},"data":{"click_action":"FLUTTER_NOTIFICATION_CLICK","type":"COMMENT"},"to":token})
@@ -97,10 +97,10 @@ function sendiOSNotification(title, message, token){
     console.log(message);
     console.log(token);
     var options = {
-        'method': 'POST',
-        'url': 'https://fcm.googleapis.com/fcm/send',
+        'method' : 'POST',
+        'url'    : 'https://fcm.googleapis.com/fcm/send',
         'headers': {
-          'Content-Type': 'application/json',
+          'Content-Type' : 'application/json',
           'Authorization': 'key=AAAAt1vyJPo:APA91bG0GFz5DVB33S0U42aEE-nuRZklGDYLz6loffiPXjMuLuNusVlXu71bPmB97de_Fbz0P8z2H_CtYCNR2ZCjWtOhzzPtbLEOwVA13jaPLj-NcMLD_s7w87uWJtNUdFe80tyvJ1Yw'
         },
         body: JSON.stringify({"notification":{"title":title,"body":message},"data":{"click_action":"FLUTTER_NOTIFICATION_CLICK","type":"COMMENT"},"to":token})
@@ -251,14 +251,14 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
     if(req.body.gender == 1) {
         var iosOptions = {
             'method': 'GET',
-            'url': 'http://tahminoglu.com/iosnotifications',
+            'url'   : 'http://tahminoglu.com/iosnotifications',
           };
           request(iosOptions, function (error, response) {
             if (error) throw new Error(error);
             var iosNotiifcationList = JSON.parse(response.body);
-            var homeName = req.body.homeTeam;
-            var awayName = req.body.guestTeam;
-            var fullTeamNames = homeName + " - " + awayName;
+            var homeName            = req.body.homeTeam;
+            var awayName            = req.body.guestTeam;
+            var fullTeamNames       = homeName + " - " + awayName;
     
             var list = iosNotiifcationList.filter(element => element['match'] == fullTeamNames);
 
@@ -272,14 +272,14 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
 
           var androidOptions = {
             'method': 'GET',
-            'url': 'http://tahminoglu.com/androidnotifications',
+            'url'   : 'http://tahminoglu.com/androidnotifications',
           };
           request(androidOptions, function (error, response) {
             if (error) throw new Error(error);
             var androidNotificationList = JSON.parse(response.body);
-            var homeName = req.body.homeTeam;
-            var awayName = req.body.guestTeam;
-            var fullTeamNames = homeName + " - " + awayName;
+            var homeName                = req.body.homeTeam;
+            var awayName                = req.body.guestTeam;
+            var fullTeamNames           = homeName + " - " + awayName;
     
             var androidList = androidNotificationList.filter(element => element['match'] == fullTeamNames);
 
@@ -369,6 +369,7 @@ app.get('/settings', (_,res) => {
     res.json({
         "myBanner"      : false,
         "admobBanner"   : true,
+        "giftDate"      : "7/8/2020",
         "bannerLink"    : "",
         "androidVersion": "1.1.2",
         "iosVersion"    : "1.2.6",
