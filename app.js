@@ -371,8 +371,8 @@ app.get('/settings', (_,res) => {
         "admobBanner"   : true,
         "giftDate"      : "7/8/2020",
         "bannerLink"    : "",
-        "androidVersion": "1.1.2",
-        "iosVersion"    : "1.2.6",
+        "androidVersion": "1.1.3",
+        "iosVersion"    : "1.2.7",
         "androidLink"   : "https://play.google.com/store/apps/details?id=com.shuffledev.tahoglu",
         "iosLink"       : "https://apps.apple.com/az/app/tahmino%C4%9Flu-i-ddaa-tahminleri/id1496838071",
     });
