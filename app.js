@@ -369,7 +369,7 @@ app.get('/settings', (_,res) => {
     res.json({
         "myBanner"      : false,
         "admobBanner"   : true,
-        "giftDate"      : "7/7/2020",
+        "giftDate"      : "7/8/2020",
         "bannerLink"    : "",
         "androidVersion": "1.1.3",
         "iosVersion"    : "1.2.7",
