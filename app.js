@@ -142,7 +142,7 @@ const MatchSessionChecker = (req, res, next) => {
     }
 };
 
-app.get('/home', function (_, res) {
+app.get('/home', sessionChecker, function (_, res) {
     res.render('home');
 });
 
