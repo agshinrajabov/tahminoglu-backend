@@ -251,7 +251,7 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
     if(req.body.gender == 1) {
         var iosOptions = {
             'method': 'GET',
-            'url'   : 'http://tahminoglu.com/iosnotifications',
+            'url'   : 'http://tahmin-master.herokuapp.com/iosnotifications',
           };
           request(iosOptions, function (error, response) {
             if (error) throw new Error(error);
@@ -272,7 +272,7 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
 
           var androidOptions = {
             'method': 'GET',
-            'url'   : 'http://tahminoglu.com/androidnotifications',
+            'url'   : 'http://tahmin-master.herokuapp.com/androidnotifications',
           };
           request(androidOptions, function (error, response) {
             if (error) throw new Error(error);
