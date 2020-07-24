@@ -373,7 +373,7 @@ app.get('/settings', (_,res) => {
         "bannerLink"    : "",
         "androidVersion": "1.1.3",
         "iosVersion"    : "1.2.7",
-        "iosVersionUpdate"    : "1.2.8",
+        "iosVersionUpdate"    : "1.2.9",
         "androidLink"   : "https://play.google.com/store/apps/details?id=com.shuffledev.tahoglu",
         "iosLink"       : "https://apps.apple.com/az/app/tahmino%C4%9Flu-i-ddaa-tahminleri/id1496838071",
     });
