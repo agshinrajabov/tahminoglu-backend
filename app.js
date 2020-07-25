@@ -371,7 +371,7 @@ app.get('/settings', (_,res) => {
         "admobBanner"   : true,
         "giftDate"      : "7/8/2020",
         "bannerLink"    : "",
-        "androidVersion": "1.1.3",
+        "androidVersion": "1.1.7",
         "iosVersion"    : "1.2.7",
         "iosVersionUpdate"    : "1.2.9",
         "androidLink"   : "https://play.google.com/store/apps/details?id=com.shuffledev.tahoglu",
