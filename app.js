@@ -7,6 +7,9 @@ var helper           = require('./helper');
 var makeImage        = require('./make-image');
 var telegram         = require('./telegram');
 var scrape           = require('./scrape');
+var tahminAnaliz     = require('./tahminAnaliz');
+var oraniDusenler    = require('./oraniDusenler');
+var avrupadaTop10    = require('./avrupadaTop10');
 var session          = require('express-session');
 var Guess            = require('./guess-add.js');
 var History          = require('./history.js');
@@ -367,15 +370,15 @@ app.get('/updatedApi', (_,res) => {
 
 app.get('/settings', (_,res) => {
     res.json({
-        "myBanner"      : false,
-        "admobBanner"   : true,
-        "giftDate"      : "7/8/2020",
-        "bannerLink"    : "",
-        "androidVersion": "1.1.8",
-        "iosVersion"    : "1.3.0",
-        "iosVersionUpdate"    : "1.3.0",
-        "androidLink"   : "https://play.google.com/store/apps/details?id=com.shuffledev.tahoglu",
-        "iosLink"       : "https://apps.apple.com/az/app/tahmino%C4%9Flu-i-ddaa-tahminleri/id1496838071",
+        "myBanner"        : false,
+        "admobBanner"     : true,
+        "giftDate"        : "7/8/2020",
+        "bannerLink"      : "",
+        "androidVersion"  : "1.1.8",
+        "iosVersion"      : "1.3.0",
+        "iosVersionUpdate": "1.3.0",
+        "androidLink"     : "https://play.google.com/store/apps/details?id=com.shuffledev.tahoglu",
+        "iosLink"         : "https://apps.apple.com/az/app/tahmino%C4%9Flu-i-ddaa-tahminleri/id1496838071",
     });
 });
 
@@ -384,5 +387,11 @@ app.get('/link', function (_, res) {
 });
 
 scrape(app);
+
+tahminAnaliz(app);
+
+oraniDusenler(app);
+
+avrupadaTop10(app);
 
 app.listen(process.env.PORT || 4949);
