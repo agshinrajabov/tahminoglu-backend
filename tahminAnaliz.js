@@ -30,14 +30,16 @@ module.exports = function(app) {
                         var tr = $(tbody.eq(j));
                         var status = $('td', tr).eq(0).attr('class');
                         var name = $('td', tr).eq(1).text();
-                        var date = $('td', tr).eq(2).text();
-                        var finish = $('td', tr).eq(3).text();
+                        var injury = $('td', tr).eq(2).text();
+                        var start = $('td', tr).eq(3).text();
+                        var finish = $('td', tr).eq(4).text();
 
                         if(name.length > 1) {
                             const player = {
                                 'status' : status,
                                 'name' : name,
-                                'date': date,
+                                'injury': injury,
+                                'start': start,
                                 'finish': finish
                             }
                             personals.push(player);
