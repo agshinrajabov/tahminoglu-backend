@@ -4,10 +4,14 @@ module.exports = function(app) {
     request = request.defaults({jar: cookieJar});
     const $ = require('cheerio');
 
-    const sample = "https://www.tahminanaliz.com/turkiye-super-lig-sakat-cezali-oyuncu-listesi/";
 
 
-    app.get('/tahmin', (req,res) => {
+    app.get('/tahmin/:id', (req,res) => {
+        const ulke = req.params.id;
+        const sample = "https://www.tahminanaliz.com/"+ ulke +"/";
+
+
+
         getRequest(sample, (html, next) => {
             try {
                 
