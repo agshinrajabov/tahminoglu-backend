@@ -4,6 +4,11 @@ module.exports = function(app) {
     request = request.defaults({jar: cookieJar});
     const $ = require('cheerio');
 
+    function lastElement(array) {
+        return array.slice(0,array.length-4);
+     }
+     
+
 
 
     app.get('/tahmin/:id', (req,res) => {
@@ -38,9 +43,10 @@ module.exports = function(app) {
                             personals.push(player);
                         }
                     }
-                    api.push(personals);
+                    api.push(...personals);
                 }
-                res.status(200).json(api);
+                var datas = lastElement(api);
+                res.status(200).json(datas);
 
             } catch(e) {
                 console.log(e);
