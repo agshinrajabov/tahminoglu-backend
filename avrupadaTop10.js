@@ -10,23 +10,27 @@ module.exports = function(app) {
         getRequest(sample, (html, next) => {
             try {
                 
-                const rows = $('.brs_col table tbody', html).eq(0).children();
+                const rows = $('.brs_col table tbody', html).children();
                 var api = [];
-
-                    for(var j = 0; j < rows.length; j++) {
+                    for(var j = 1; j < rows.length; j++) {
                         var tr = $(rows.eq(j));
                         var date = $('td', tr).eq(0).text();
                         var teams = $('td', tr).eq(1).text().trim().split('-');
                         var predict = $('td', tr).eq(2).text();
                         var bet = $('td', tr).eq(3).text();
-
+                            console.log(date);
+                            console.log(teams);
+                            console.log(predict);
+                            console.log(bet);
                         const match = {
                             'date': date.trim(),
                             'homeTeam': teams[0].trim(),
                             'awayTeam': teams[1].trim(),
                             'predict': predict.trim(),
-                            'bet': bet.trim(),
+                            'bet': bet,
                         }
+
+                        console.log(match);
                         // console.log(match);
                     api.push(match);
                 }

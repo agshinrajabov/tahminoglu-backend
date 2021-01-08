@@ -16,6 +16,8 @@ var History          = require('./history.js');
 var compression      = require('compression');
 var request          = require('request');
 var app              = express();
+var crypto = require('crypto');
+const {Base64} = require('js-base64');
 
 require('./expressMongoDB');
 app.set('view engine', 'hbs');
@@ -179,6 +181,8 @@ app.post('/login', urlencodedParser, function(req,res) {
        return res.render('login', {alert: "Daxil etdiyiniz istifadəçi adı və ya şifrə yanlışdır."});
     }
 });
+
+
 
 app.get('/notification', function (_, res) {
     res.render('notification');
@@ -368,6 +372,12 @@ app.get('/updatedApi', (_,res) => {
     }).where('gameStatus').equals(1);
 });
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 app.get('/settings', (_,res) => {
     res.json({
         "myBanner"        : false,
@@ -384,6 +394,20 @@ app.get('/settings', (_,res) => {
 
 app.get('/link', function (_, res) {
     res.render('link');
+});
+
+app.get('/payment', function (req, res) {
+    var request = require('request');
+    var url = 'https://api.yapikredi.com.tr/api/investmentrates/v1/currencyRates';
+    var queryParams = '?' +  encodeURIComponent('Agshin Rajabov') + '=' + encodeURIComponent('Agshin Rajabov');
+    request({
+        url: url + queryParams,
+        method: 'GET'
+    }, function (error, response, body) {
+        console.log('Status', response.statusCode);
+        console.log('Headers', JSON.stringify(response.headers));
+        console.log('Reponse received', body);
+    });
 });
 
 scrape(app);
