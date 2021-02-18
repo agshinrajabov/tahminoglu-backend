@@ -283,7 +283,7 @@ app.post('/notification', urlencodedParser, async function(req,res) {
 });
 
 app.get('/guess', MatchSessionChecker, function (_, res) {
-    Guess.find({}, (err,data) => {
+    Guess.find({}).lean().exec((err, data) => {
         if(err) {
             throw err;
         } 
@@ -330,7 +330,7 @@ app.post('/guess-add', urlencodedParser, async function (req, res) {
                   });
 
                 const androidUsers = await firebaseAndroid.db.collection('users').get();
-                
+
                 if(androidUsers.empty) {
                     console.log('No matching documents.');
                     return;
