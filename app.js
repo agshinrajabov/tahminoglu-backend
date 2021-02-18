@@ -282,7 +282,7 @@ app.post('/notification', urlencodedParser, async function(req,res) {
     res.render('notification');
 });
 
-app.get('/guess', MatchSessionChecker, function (_, res) {
+app.get('/guess',  function (_, res) {
     Guess.find({}).lean().exec((err, data) => {
         if(err) {
             throw err;

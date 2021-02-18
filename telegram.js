@@ -1,12 +1,16 @@
+
+
 module.exports = function(photo) {
+    require('dotenv').config({path: '.env'})
     const Telegraf = require('telegraf');
-    const fs = require('fs');
+    var fs = require('fs');
 
     let options = {
     channelMode: true    // Handle `channel_post` updates as messages (optional)
     }
 
-    const bot = new Telegraf('1693483922:AAFPgV2jtu_Yqb1LAyTd6QKYC2yqIcz5uyY', options)
+    const bot = new Telegraf(process.env.BOT_TOKEN, options);
+    
     // bot.start((ctx) => {
     // ctx.reply('Welcome!')
     // });
