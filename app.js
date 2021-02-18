@@ -278,7 +278,7 @@ app.post('/notification', urlencodedParser, async function(req,res) {
         sendAndroidNotifications(title, message, token);
       });
 
-      
+
     res.render('notification');
 });
 
@@ -329,7 +329,8 @@ app.post('/guess-add', urlencodedParser, async function (req, res) {
                     sendIOSNotificaitons(title, message, token);
                   });
 
-                  const androidUsers = await firebaseAndroid.db.collection('users').get();
+                const androidUsers = await firebaseAndroid.db.collection('users').get();
+                
                 if(androidUsers.empty) {
                     console.log('No matching documents.');
                     return;
