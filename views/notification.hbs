@@ -46,23 +46,14 @@
                     </div>
 
                     <div class="notification-form">
-                        <form action="">
+                        <form action="/notification" method="POST">
                             <label for="notTitle">Bildiriş başlığı
                                 <input required name="not_Title" id="notTitle" type="text" minlength="6" maxlength="25" placeholder="Başlıq">
-                            </label>
-
-                            <label for="notTitle2">Bildiriş alt başlığı
-                                <input required name="not_Title2" id="notTitle2" type="text" minlength="6" maxlength="25" placeholder="Alt başlıq">
-                            </label>
-
-                            <label for="notDate">Bildiriş tarixi
-                                <input required name="not_Date" id="notDate" type="date">
                             </label>
 
                             <label for="notText">Bildiriş mətni
                                 <textarea required name="not_Text" id="notText" cols="45" rows="7"></textarea>
                             </label>
-                            
                             <input type="submit" value="Göndər">
                         </form>
                     </div>

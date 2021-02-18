@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "tahminoglu-banko-maclar",
+    "private_key_id": "401260fdae506a95cb09f336b172fa56bb15a734",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCxM1JaTV0087Jx\nSrqP8uvxBdV8Z7mix7d4+CG4KWJG44hiHv5ZgG2l62aCBCQG7VKmo/mgxJ5yWRmx\nRZUEoVsQwp8FpwvM4F2wcXgnVlzQcUcx1DlXBQpgW04IS7eb9qHVYiyo69wQlNk1\nKUhNyj8dOgSrNmsAFRcVfwi8+7o5aC8XKD1ewdipGDVTj5L7qWeSysDYfaYpsl4U\nhxkKl2imt+XDm9S8ap4aJUmIk0nTxQZ/p7+rOzg0+1bskt9mU3CUeZVFFTqbuxQQ\nexd15Xh5tSsYfsmPSKSBwQcoIfFHGgcsqgyJGufEtzQ8vY0cYojYwsrqEpjUhOK4\ntd8wt6T/AgMBAAECggEAFJXJs1kuwsACCCHjmmVgqMHsvbmvBGH/G7vM7v/1EsHL\n+NobjM+GmAfIrhdHuCZJu7drgGmsSSG2Al9QTcFmOtmLxQmq1+9t8tlmWUDcd2Ux\ncsXHWNHqaqyGBstaVnFIS5ROwTDlLRKdnmIKrD7FJjgJ4s885D2O+PL7qONKtvBZ\n0XWXTKrNrPY576KWyryEwQ3av1hCJFrj3D4Sfel/qZ4sYsliGnwTb+suYhjr4rfF\nQ1M9P31jnF1BQioGDckorSqTMJc4zvFo18cdFqbhsyrV3cpNtyaCEb72wBXEi1tk\ncu2MN9qURcBegwPVeY0TE3mceVdz1gRvyW7mp6UOgQKBgQDl6GaP1iF7gtZGLac/\nx4DY6CHBtOvc6K3pfpDk8A4+fgaSkiPA49yvY6ET03tEJmszRQ+W6qj41pk+2grq\nVJ+z3PNlfaR8EOfFOURfxQp6K/psFkCK6FfX0KXhnvnrJJJ4mTP0Ae/6YzP4T6xJ\nQHzW+iewhPjqV8UfHykDf2YcVwKBgQDFT5g54G37VJLw1YDP7mArCcyOboUX06Is\nQORm/Ydc/DNo3EVAR82TkP4I9xzAsLmXIyyg/nFTN0JXk4qj1kd4iVNsSaVU+dk7\ns54HqNTLZLYMddGKMVWiXD7/MK6jX5hUzBBaKYF/KzKRzZrjSR2rwPKeu/INzIs0\nBkVj8jPTmQKBgQC3Qtj+LqHh4hkLN7jpjg2W2PKPhbe9D3wRc2HsG64/AhYbH4KA\nbyGqbLApLZpEaJtq8tHKaqLmN6lQAF5TC8GBjc42SECk5JTbERr/fAEuAYBMSDCK\niUn8LcUMY7yzQyO+HeDbz++KlykF9fxPJ6hbdGvOuS/xHKV0eVIoB5VNYQKBgA+p\nW7nsWI6Ejg1TxR+8GiIQaw47M5FKmSrOE9Mg+Kem1SXTpiOOD4FRFvj7NGsPHAwl\nHJvC1pf2YOu2qGCM16t3qwmDZv4xvs6AWWDeQ9XJLrIagAFqHRQAInf7E0GgiuTg\nNcQSW1cOxLrSCSNVYGeLrzZuUK5LuBjvDn76cKaxAoGANQqYyM50iTcJNupoi3tb\nd8/pi5UjbMIfavh2csGsylrvOcMA8iMS/Xa3Ksa75P4Dtkn31S8dhZ6rgO8Y/dNt\nYvEhh/2WAwV5YxWSvp7wUrQSVQZOrVKK9WohdUxVngFuABttdpqBl25O6sCJkUM7\nWJygxxjWALKsfpCLVpC9CO0=\n-----END PRIVATE KEY-----\n",
+    "client_email": "firebase-adminsdk-62c6c@tahminoglu-banko-maclar.iam.gserviceaccount.com",
+    "client_id": "107584560257523116788",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-62c6c%40tahminoglu-banko-maclar.iam.gserviceaccount.com"
+  }
+  

@@ -15,9 +15,14 @@ var Guess            = require('./guess-add.js');
 var History          = require('./history.js');
 var compression      = require('compression');
 var request          = require('request');
+var firebase          = require('./firebase');
+var androidFirebase          = require('./firebaseAndroid');
 var app              = express();
 var crypto = require('crypto');
 const {Base64} = require('js-base64');
+const axios = require('axios').default;
+const { url } = require('inspector');
+const firebaseAndroid = require('./firebaseAndroid');
 
 require('./expressMongoDB');
 app.set('view engine', 'hbs');
@@ -183,8 +188,97 @@ app.post('/login', urlencodedParser, function(req,res) {
 });
 
 
+// Future<bool> sendFcmMessage(String title, String message, String token) async {
+//     try {
+    //   var url = 'https://fcm.googleapis.com/fcm/send';
+    //   var header = {
+    //     "Content-Type": "application/json",
+    //     "Authorization":
+    //         "key=AAAAt1vyJPo:APA91bG0GFz5DVB33S0U42aEE-nuRZklGDYLz6loffiPXjMuLuNusVlXu71bPmB97de_Fbz0P8z2H_CtYCNR2ZCjWtOhzzPtbLEOwVA13jaPLj-NcMLD_s7w87uWJtNUdFe80tyvJ1Yw",
+    //   };
+    //   var request = {
+    //     'notification': {'title': title, 'body': message},
+    //     'data': {'click_action': 'FLUTTER_NOTIFICATION_CLICK', 'type': 'COMMENT'},
+    //     'to': token
+    //   };
+  
+//       var client = new http.Client();
+//       var response = await client.post(url, headers: header, body: json.encode(request));
+//       print(response.statusCode);
+//       return true;
+//     } catch (err) {
+//       print(err);
+//       return false;
+//     }
+//   }
 
-app.get('/notification', function (_, res) {
+async function sendIOSNotificaitons(title, message, token) {
+
+ // See documentation on defining a message payload.
+ var payload = {
+    notification: {
+      title: title,
+      body: message
+    }
+  };
+  
+  firebase.admin.messaging().sendToDevice(token, payload)
+    .then((response) => {
+        console.log('Successfully sent message:', response);
+    });
+}
+
+
+async function sendAndroidNotifications(title, message, token) {
+
+    // See documentation on defining a message payload.
+    var payload = {
+       notification: {
+         title: title,
+         body: message
+       }
+     };
+     
+     androidFirebase.admin.messaging().sendToDevice(token, payload)
+       .then((response) => {
+           console.log('Successfully sent message:', response);
+       });
+   }
+   
+
+app.get('/notification', async function (_, res) {
+    res.render('notification');
+});
+
+app.post('/notification', urlencodedParser, async function(req,res) {
+    const title = req.body.not_Title;
+    const message = req.body.not_Text;
+    
+    const iosUsers = await firebase.db.collection('users').get();
+    if(iosUsers.empty) {
+        console.log('No matching documents.');
+        return;
+    }
+
+    iosUsers.forEach(doc => {
+        const token = doc.data()['token'];
+        console.log(token);
+        sendIOSNotificaitons(title, message, token);
+      });
+
+      const androidUsers = await firebaseAndroid.db.collection('users').get();
+    if(androidUsers.empty) {
+        console.log('No matching documents.');
+        return;
+    }
+
+    androidUsers.forEach(doc => {
+        const token = doc.data()['token'];
+        console.log(token);
+        sendAndroidNotifications(title, message, token);
+      });
+
+      
     res.render('notification');
 });
 
@@ -201,7 +295,7 @@ app.get('/guess-add', MatchSessionChecker, function (_, res) {
     res.render('guess-add');
 });
 
-app.post('/guess-add', urlencodedParser, function (req, res) {
+app.post('/guess-add', urlencodedParser, async function (req, res) {
    var newGuess = new Guess({
         homeTeam       : req.body.homeTeam,
         guestTeam      : req.body.guestTeam,
@@ -215,9 +309,41 @@ app.post('/guess-add', urlencodedParser, function (req, res) {
         gameCategory   : req.body.category,
     });
     makeImage(moment(req.body.gameDate).format('DD MMMM'), req.body.gameHour, req.body.homeTeam, req.body.guestTeam, req.body.gameCoefficient);
-    newGuess.save((err) => {
+    newGuess.save(async (err) => {
         if(!err) {
             telegram('./dist/' + req.body.homeTeam + '_' + req.body.guestTeam + '.jpg');
+
+            if(req.body.isNotification) {
+                const title = 'Günün maç tahminleri eklenmiştir🔥';
+                const message = 'Match tips of the day have been added🔥';
+                
+                const iosUsers = await firebase.db.collection('users').get();
+                if(iosUsers.empty) {
+                    console.log('No matching documents.');
+                    return;
+                }
+            
+                iosUsers.forEach(doc => {
+                    const token = doc.data()['token'];
+                    console.log(token);
+                    sendIOSNotificaitons(title, message, token);
+                  });
+
+                  const androidUsers = await firebaseAndroid.db.collection('users').get();
+                if(androidUsers.empty) {
+                    console.log('No matching documents.');
+                    return;
+                }
+            
+                androidUsers.forEach(doc => {
+                    const token = doc.data()['token'];
+                    console.log(token);
+                    sendAndroidNotifications(title, message, token);
+                  });
+            }
+
+
+
             return res.render('success', {image: './dist/' + req.body.homeTeam + '_' + req.body.guestTeam + '.jpg'})
         } else {
             console.log(err);

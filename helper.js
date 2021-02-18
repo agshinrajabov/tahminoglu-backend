@@ -1,4 +1,4 @@
-const exphbs  = require('express3-handlebars');
+const exphbs  = require('express-handlebars');
 const moment = require('moment');
 
 moment.locale('tr');
