@@ -56,11 +56,11 @@
                         <tbody>
                             {{#each guesses}}
                             <tr>
-                                <td><a href="/guess/edit/{{id}}">{{homeTeam}} - {{guestTeam}}</a></td>
+                                <td><a href="/guess/edit/{{_id}}">{{homeTeam}} - {{guestTeam}}</a></td>
                                 <td>{{gameDate}}, {{gameHour}}</td>
                                 <td>{{gameGuess}} - {{gameCoefficient}}</td>
                                 <td>{{#if (eq gameStatus 0)}} Gözləmədə {{else}} {{#if (eq gameStatus 1)}} Tuttu {{else}} Tutmadı {{/if}} {{/if}}</td>
-                                <td><a href="/guess/delete/{{id}}">Sil</a></td>
+                                <td><a href="/guess/delete/{{_id}}">Sil</a></td>
                             </tr>
                             {{/each}}
                         </tbody>

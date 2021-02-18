@@ -282,7 +282,7 @@ app.post('/notification', urlencodedParser, async function(req,res) {
     res.render('notification');
 });
 
-app.get('/guess', MatchSessionChecker, function (_, res) {
+app.get('/guess', function (_, res) {
     Guess.find({}).lean().exec((err, data) => {
         if(err) {
             throw err;
@@ -356,7 +356,7 @@ app.post('/guess-add', urlencodedParser, async function (req, res) {
 app.get('/guess/delete/:id', MatchSessionChecker, function(req,res) {
     const id = req.params.id
     //Find By Id
-    Guess.findOneAndRemove({_id: id}, (err, data) => {
+    Guess.findOneAndRemove({_id: id}).lean().exec((err, data) => {
         if(!err && data != null) {
             return res.redirect('/guess')
         } else {
@@ -369,13 +369,13 @@ app.get('/guess/delete/:id', MatchSessionChecker, function(req,res) {
 app.get('/guess/edit/:id',  function(req,res) {
     const id = req.params.id
     //Find By Id
-    Guess.findById({_id: id}, (err, data) => {
+    Guess.findById({_id: id}).lean().exec((err, data) => {
         if(!err) {
-           return res.render('guess-add', {data: data, editable: 'true'});
-        } else {
-            console.log(err)
-            return res.redirect('/guess')
-        }
+            return res.render('guess-add', {data: data, editable: 'true'});
+         } else {
+             console.log(err)
+             return res.redirect('/guess')
+         }
     });
 });
 
@@ -438,7 +438,7 @@ app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
         gameText       : req.body.gameText,
         gameCategory   : req.body.category,
         gameHistory    : req.body.historical,
-    }, (err, data) => {
+    }).lean().exec((err, _) => {
         if(!err) {
             if(req.body.historical) {
                 var histor = new History({
