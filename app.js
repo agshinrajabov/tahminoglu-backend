@@ -314,8 +314,10 @@ app.post('/guess-add', urlencodedParser, async function (req, res) {
             telegram('./dist/' + req.body.homeTeam + '_' + req.body.guestTeam + '.jpg');
 
             if(req.body.isNotification) {
-                const title = 'Günün maç tahminleri eklenmiştir🔥';
-                const message = 'Match tips of the day have been added🔥';
+                const title = 'Tahminoğlu';
+                const message = `
+                Günün maç tahminleri eklenmiştir🔥
+                Match tips of the day have been added🔥`;
                 
                 const iosUsers = await firebase.db.collection('users').get();
                 if(iosUsers.empty) {
