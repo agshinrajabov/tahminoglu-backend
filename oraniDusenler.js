@@ -55,7 +55,7 @@ module.exports = function(app) {
         getRequest(sample, (html, next) => {
             try {
                 
-                const rows = $('.avrupa10 tbody', html).eq(0).children();
+                const rows = $('.post-single-content tbody', html).eq(0).children();
                 console.log(rows.length);
                 var api = [];
 
@@ -63,16 +63,39 @@ module.exports = function(app) {
                         var tr = $(rows.eq(j));
                         var time = $('td', tr).eq(0).text();
                         var teams = $('td', tr).eq(1).text().trim().split('-');
-                        var home = $('td', tr).eq(2).text();
-                        var draw = $('td', tr).eq(3).text();
-                        var away = $('td', tr).eq(4).text();
+
+                        var homeHtml = $('td', tr).eq(2).html();
+                        var homeFirst = $('br', homeHtml).map(function(){
+                            return this.previousSibling.nodeValue
+                        })[0].trim();
+                        var homeSecond = $('br', homeHtml).map(function(){
+                            return this.nextSibling.nodeValue
+                        })[0].trim();
+
+                        var drawHtml = $('td', tr).eq(3).html();
+                        var drawFirst = $('br', drawHtml).map(function(){
+                            return this.previousSibling.nodeValue
+                        })[0].trim();
+                        var drawSecond = $('br', drawHtml).map(function(){
+                            return this.nextSibling.nodeValue
+                        })[0].trim();
+
+                        var awayHtml = $('td', tr).eq(4).html();
+                        var awayFirst = $('br', awayHtml).map(function(){
+                            return this.previousSibling.nodeValue
+                        })[0].trim();
+                        var awaySecond = $('br', awayHtml).map(function(){
+                            return this.nextSibling.nodeValue
+                        })[0].trim();
+
+
                         const match = {
                             'time': time.trim(),
                             'homeTeam': teams[0].trim(),
                             'awayTeam': teams[1].trim(),
-                            'home': home.trim(),
-                            'draw': draw.trim(),
-                            'away': away.trim(),
+                            'home': `${homeFirst} ${homeSecond}`,
+                            'draw': `${drawFirst} ${drawSecond}`,
+                            'away': `${awayFirst} ${awaySecond}`,
                         }
                         // console.log(match);
                     api.push(match);
