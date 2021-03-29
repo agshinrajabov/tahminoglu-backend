@@ -24,7 +24,8 @@
     "firebase-admin": "^9.5.0",
     "js-base64": "^3.6.0",
     "moment": "^2.29.1",
-    "mongoose": "^5.11.17",
+    "mongodb": "^3.6.5",
+    "mongoose": "^5.12.2",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
     "telegraf": "^3.38.0"
