@@ -18,10 +18,7 @@ module.exports = function(app) {
                         var teams = $('td', tr).eq(1).text().trim().split('-');
                         var predict = $('td', tr).eq(2).text();
                         var bet = $('td', tr).eq(3).text();
-                            console.log(date);
-                            console.log(teams);
-                            console.log(predict);
-                            console.log(bet);
+                    
                         const match = {
                             'date': date.trim(),
                             'homeTeam': teams[0].trim(),
@@ -30,7 +27,6 @@ module.exports = function(app) {
                             'bet': bet,
                         }
 
-                        console.log(match);
                         // console.log(match);
                     api.push(match);
                 }

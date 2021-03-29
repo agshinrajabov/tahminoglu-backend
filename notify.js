@@ -1,4 +1,3 @@
-console.log("START");
 var FCM = require('fcm-node');
 var serviceAccount = require("./tahmin-master-firebase-adminsdk-e8nst-65cb671abf.json");
 var fcm = new FCM(serviceAccount);
@@ -22,12 +21,10 @@ var message = {
 
 fcm.send(message, function(err, response){
     if (err) {
-        console.log("Something has gone wrong!")
 
         console.log(err);
 
     } else {
-        console.log("Successfully sent with response: ", response)
     }
 })
 

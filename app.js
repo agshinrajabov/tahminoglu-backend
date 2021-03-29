@@ -94,18 +94,12 @@ function sendAndroidNotification(title, message, token){
       };
     request(options, function (error, response) {
         if (error) throw new Error(error);
-        console.log(response.body);
-        console.log(response.statusCode);
-        console.log(response.statusMessage);
-        console.log("_____________");
     });
 }
 
 
 function sendiOSNotification(title, message, token){
-    console.log(title);
-    console.log(message);
-    console.log(token);
+    
     var options = {
         'method' : 'POST',
         'url'    : 'https://fcm.googleapis.com/fcm/send',
@@ -118,10 +112,7 @@ function sendiOSNotification(title, message, token){
       };
     request(options, function (error, response) {
         if (error) throw new Error(error);
-        console.log(response.body);
-        console.log(response.statusCode);
-        console.log(response.statusMessage);
-        console.log("_____________");
+    
     });
 }
 
@@ -224,7 +215,6 @@ async function sendIOSNotificaitons(title, message, token) {
   
   firebase.admin.messaging().sendToDevice(token, payload)
     .then((response) => {
-        console.log('Successfully sent message:', response);
     });
 }
 
@@ -241,7 +231,6 @@ async function sendAndroidNotifications(title, message, token) {
      
      androidFirebase.admin.messaging().sendToDevice(token, payload)
        .then((response) => {
-           console.log('Successfully sent message:', response);
        });
    }
    
@@ -256,25 +245,21 @@ app.post('/notification', urlencodedParser, async function(req,res) {
     
     const iosUsers = await firebase.db.collection('users').get();
     if(iosUsers.empty) {
-        console.log('No matching documents.');
         return;
     }
 
     iosUsers.forEach(doc => {
         const token = doc.data()['token'];
-        console.log(token);
         sendIOSNotificaitons(title, message, token);
       });
 
       const androidUsers = await firebaseAndroid.db.collection('users').get();
     if(androidUsers.empty) {
-        console.log('No matching documents.');
         return;
     }
 
     androidUsers.forEach(doc => {
         const token = doc.data()['token'];
-        console.log(token);
         sendAndroidNotifications(title, message, token);
       });
 
@@ -321,26 +306,22 @@ app.post('/guess-add', urlencodedParser, async function (req, res) {
                 
                 const iosUsers = await firebase.db.collection('users').get();
                 if(iosUsers.empty) {
-                    console.log('No matching documents.');
                     return;
                 }
             
                 iosUsers.forEach(doc => {
                     const token = doc.data()['token'];
-                    console.log(token);
                     sendIOSNotificaitons(title, message, token);
                   });
 
                 const androidUsers = await firebaseAndroid.db.collection('users').get();
 
                 if(androidUsers.empty) {
-                    console.log('No matching documents.');
                     return;
                 }
             
                 androidUsers.forEach(doc => {
                     const token = doc.data()['token'];
-                    console.log(token);
                     sendAndroidNotifications(title, message, token);
                   });
             }
@@ -533,9 +514,7 @@ app.get('/payment', function (req, res) {
         url: url + queryParams,
         method: 'GET'
     }, function (error, response, body) {
-        console.log('Status', response.statusCode);
-        console.log('Headers', JSON.stringify(response.headers));
-        console.log('Reponse received', body);
+
     });
 });
 
