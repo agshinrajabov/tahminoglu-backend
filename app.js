@@ -243,25 +243,25 @@ app.post('/notification', urlencodedParser, async function(req,res) {
     const title = req.body.not_Title;
     const message = req.body.not_Text;
     
-    const iosUsers = await firebase.db.collection('users').get();
-    if(iosUsers.empty) {
-        return;
-    }
+    // const iosUsers = await firebase.db.collection('users').get();
+    // if(iosUsers.empty) {
+    //     return;
+    // }
 
-    iosUsers.forEach(doc => {
-        const token = doc.data()['token'];
-        sendIOSNotificaitons(title, message, token);
-      });
+    // iosUsers.forEach(doc => {
+    //     const token = doc.data()['token'];
+    //     sendIOSNotificaitons(title, message, token);
+    //   });
 
-      const androidUsers = await firebaseAndroid.db.collection('users').get();
-    if(androidUsers.empty) {
-        return;
-    }
+    //   const androidUsers = await firebaseAndroid.db.collection('users').get();
+    // if(androidUsers.empty) {
+    //     return;
+    // }
 
-    androidUsers.forEach(doc => {
-        const token = doc.data()['token'];
-        sendAndroidNotifications(title, message, token);
-      });
+    // androidUsers.forEach(doc => {
+    //     const token = doc.data()['token'];
+    //     sendAndroidNotifications(title, message, token);
+    //   });
 
 
     res.render('notification');
@@ -298,33 +298,33 @@ app.post('/guess-add', urlencodedParser, async function (req, res) {
         if(!err) {
             telegram('./dist/' + req.body.homeTeam + '_' + req.body.guestTeam + '.jpg');
 
-            if(req.body.isNotification) {
-                const title = 'Tahminoğlu';
-                const message = `
-                Günün maç tahminleri eklenmiştir🔥
-                Match tips of the day have been added🔥`;
+            // if(req.body.isNotification) {
+            //     const title = 'Tahminoğlu';
+            //     const message = `
+            //     Günün maç tahminleri eklenmiştir🔥
+            //     Match tips of the day have been added🔥`;
                 
-                const iosUsers = await firebase.db.collection('users').get();
-                if(iosUsers.empty) {
-                    return;
-                }
+            //     const iosUsers = await firebase.db.collection('users').get();
+            //     if(iosUsers.empty) {
+            //         return;
+            //     }
             
-                iosUsers.forEach(doc => {
-                    const token = doc.data()['token'];
-                    sendIOSNotificaitons(title, message, token);
-                  });
+            //     iosUsers.forEach(doc => {
+            //         const token = doc.data()['token'];
+            //         sendIOSNotificaitons(title, message, token);
+            //       });
 
-                const androidUsers = await firebaseAndroid.db.collection('users').get();
+            //     const androidUsers = await firebaseAndroid.db.collection('users').get();
 
-                if(androidUsers.empty) {
-                    return;
-                }
+            //     if(androidUsers.empty) {
+            //         return;
+            //     }
             
-                androidUsers.forEach(doc => {
-                    const token = doc.data()['token'];
-                    sendAndroidNotifications(title, message, token);
-                  });
-            }
+            //     androidUsers.forEach(doc => {
+            //         const token = doc.data()['token'];
+            //         sendAndroidNotifications(title, message, token);
+            //       });
+            // }
 
 
 
@@ -365,47 +365,47 @@ app.get('/guess/edit/:id',  function(req,res) {
 app.post('/guess/edit/:id', urlencodedParser, function(req,res) {
     const id = req.params.id
 
-    if(req.body.gender == 1) {
-        var iosOptions = {
-            'method': 'GET',
-            'url'   : 'http://tahmin-master.herokuapp.com/iosnotifications',
-          };
-          request(iosOptions, function (error, response) {
-            if (error) throw new Error(error);
-            var iosNotiifcationList = JSON.parse(response.body);
-            var homeName            = req.body.homeTeam;
-            var awayName            = req.body.guestTeam;
-            var fullTeamNames       = homeName + " - " + awayName;
+    // if(req.body.gender == 1) {
+    //     var iosOptions = {
+    //         'method': 'GET',
+    //         'url'   : 'http://tahmin-master.herokuapp.com/iosnotifications',
+    //       };
+    //       request(iosOptions, function (error, response) {
+    //         if (error) throw new Error(error);
+    //         var iosNotiifcationList = JSON.parse(response.body);
+    //         var homeName            = req.body.homeTeam;
+    //         var awayName            = req.body.guestTeam;
+    //         var fullTeamNames       = homeName + " - " + awayName;
     
-            var list = iosNotiifcationList.filter(element => element['match'] == fullTeamNames);
+    //         var list = iosNotiifcationList.filter(element => element['match'] == fullTeamNames);
 
-            for(var match in list) {
-                sendiOSNotification("Tebrikler!", "Yaptığımız " + fullTeamNames + " maçı tahmini kazanmıştır! 😍", list[match]['token']);
-            }
+    //         for(var match in list) {
+    //             sendiOSNotification("Tebrikler!", "Yaptığımız " + fullTeamNames + " maçı tahmini kazanmıştır! 😍", list[match]['token']);
+    //         }
     
-          });
+    //       });
 
-          //Şahbaz: Əhləmdulillah
+    //       //Şahbaz: Əhləmdulillah
 
-          var androidOptions = {
-            'method': 'GET',
-            'url'   : 'http://tahmin-master.herokuapp.com/androidnotifications',
-          };
-          request(androidOptions, function (error, response) {
-            if (error) throw new Error(error);
-            var androidNotificationList = JSON.parse(response.body);
-            var homeName                = req.body.homeTeam;
-            var awayName                = req.body.guestTeam;
-            var fullTeamNames           = homeName + " - " + awayName;
+    //       var androidOptions = {
+    //         'method': 'GET',
+    //         'url'   : 'http://tahmin-master.herokuapp.com/androidnotifications',
+    //       };
+    //       request(androidOptions, function (error, response) {
+    //         if (error) throw new Error(error);
+    //         var androidNotificationList = JSON.parse(response.body);
+    //         var homeName                = req.body.homeTeam;
+    //         var awayName                = req.body.guestTeam;
+    //         var fullTeamNames           = homeName + " - " + awayName;
     
-            var androidList = androidNotificationList.filter(element => element['match'] == fullTeamNames);
+    //         var androidList = androidNotificationList.filter(element => element['match'] == fullTeamNames);
 
-            for(var mat in androidList) {
-                sendAndroidNotification("Tebrikler!", "Yaptığımız " + fullTeamNames + " maçı tahmini kazanmıştır! 😍", androidList[mat]['token']);
-            }
+    //         for(var mat in androidList) {
+    //             sendAndroidNotification("Tebrikler!", "Yaptığımız " + fullTeamNames + " maçı tahmini kazanmıştır! 😍", androidList[mat]['token']);
+    //         }
     
-          });
-    }
+    //       });
+    // }
     //Find By Id
     Guess.findOneAndUpdate({_id: id}, {
         homeTeam       : req.body.homeTeam,
