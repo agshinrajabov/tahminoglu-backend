@@ -23,13 +23,25 @@ const {Base64} = require('js-base64');
 const axios = require('axios').default;
 const { url } = require('inspector');
 const firebaseAndroid = require('./firebaseAndroid');
+var session = require('express-session')
+var MemoryStore = require('memorystore')(session)
 
 require('./expressMongoDB');
 app.set('view engine', 'hbs');
 app.engine('hbs', helper.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.use('/assets', express.static(path.join(__dirname, 'dist')))
-app.use(session({secret: 'secret', resave: true,saveUninitialized: true}));
+
+app.use(session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    }),
+    resave: false,
+    saveUninitialized: true,
+
+    secret: 'keyboard cat'
+}))
 app.use(compression());
 
 var androidNotificationList = new Promise((resolve, reject) => {
