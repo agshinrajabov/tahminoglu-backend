@@ -15,13 +15,15 @@ var Register          = require('./pages/auth/register');
 var compression      = require('compression');
 var app              = express();
 const puppeteer = require('puppeteer');
+const encode = require('blurhash');
 const $ = require('cheerio');
 let request = require('request-promise');
 const cookieJar = request.jar();
 request = request.defaults({jar: cookieJar});
 var session = require('express-session')
 var MemoryStore = require('memorystore')(session)
- 
+var Canvas = require("canvas");
+
 require('./utilities/expressMongoDB');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'hbs');
@@ -333,10 +335,12 @@ app.get('/haberler', (req,res) => {
           var haberImage = $('img', img).attr('src').trim();
           var haberTitle = $('.widget-article__teaser', item).eq(0).text();
           var haberLink = $('a.widget-article__link', item).eq(0).attr('href');         
+          var haberTarih = $('.widget-article__published-time', item).eq(0).attr('datetime');         
          var haber = {
              title: haberTitle.trim(),
              link: haberLink,
-             image: haberImage
+             image: haberImage,
+             date: haberTarih
          };
 
          api.push(haber);
