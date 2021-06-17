@@ -1,5 +1,5 @@
 var FCM = require('fcm-node');
-var serviceAccount = require("./tahmin-master-firebase-adminsdk-e8nst-65cb671abf.json");
+var serviceAccount = require("../tahmin-master-firebase-adminsdk-e8nst-65cb671abf.json");
 var fcm = new FCM(serviceAccount);
 var collapseKey = 'new_message';
 var message = {
