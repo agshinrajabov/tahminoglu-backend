@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -32,7 +29,10 @@
     "request-promise": "^4.2.6",
     "telegraf": "^3.38.0"
   },
+  "scripts": {
+    "start": "node index.js"
+  },
   "engines": {
-    "node": "12.x"
+    "node": "13.3.0"
   }
 }
