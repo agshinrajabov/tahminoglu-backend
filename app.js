@@ -344,8 +344,9 @@ app.get('/haberler', (req,res) => {
     getRequest(url, (html) => {
         
         const api = [];
-         
-        $('.widget-article-list__article', html).each(function(i, item) {
+
+        var $ = cheerio.load(html);
+        $('.widget-article-list__article').each(function(i, item) {
           var imageHtml = $('.widget-responsive-picture__img', item).eq(0);
           var img = imageHtml.text().toString();
           var haberImage = $('img', img).attr('src').trim();
@@ -369,7 +370,8 @@ app.get('/haberler', (req,res) => {
 app.post('/haber', (req,res) => {
     const link = req.body.link;    
     getRequest(link, (html) => {
-        var imageHtml = $('.widget-article__body', html).eq(0).text().trim();      
+        var $ = cheerio.load(html);
+        var imageHtml = $('.widget-article__body').eq(0).text().trim();      
         res.end(imageHtml);        
     });
 });
