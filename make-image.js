@@ -17,7 +17,6 @@ var ctx = canvas.getContext('2d')
 var ctx2 = canvas.getContext('2d');
 var ctx3 = canvas.getContext('2d');
 var ctx4 = canvas.getContext('2d');
-var ctx5 = canvas.getContext('2d');
 
 var Image = Canvas.Image;
 var img = new Image();

@@ -15,8 +15,7 @@ var Register          = require('./pages/auth/register');
 var compression      = require('compression');
 var app              = express();
 const puppeteer = require('puppeteer');
-const encode = require('blurhash');
-const $ = require('cheerio');
+const cheerio = require('cheerio');
 let request = require('request-promise');
 const cookieJar = request.jar();
 request = request.defaults({jar: cookieJar});
@@ -280,7 +279,10 @@ app.get('/matchDetails/:id', async (req,res) => {
 
         const matchDetailsApi = [];
 
-        $('.fact_row', content).each(function(_, item) {
+        const $ = cheerio.load(content);
+
+
+        $('.fact_row').each(function(_, item) {
             var txt = $('div', item).eq(1).text().trim();
             matchDetailsApi.push(txt);
         });
