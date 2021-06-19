@@ -277,7 +277,7 @@ app.get('/matchDetails/:id', async (req,res) => {
             args: [
                 '--no-sandbox',
               ],
-              headless: false
+              headless: true
         });
         const page = await browser.newPage();
         await page.goto(url, {
