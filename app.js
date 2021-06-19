@@ -261,13 +261,21 @@ app.get('/link', function (_, res) {
     res.render('link');
 });
 
+app.get('/daily/:date', (req, res) => {
+    //DATE: 20210612
+    var link = `https://www.fotmob.com/matches?date=${req.params.date}`;
+    getRequest(link, (html) => {
+        res.end(html);        
+    });
+
+});
+
 app.get('/matchDetails/:id', async (req,res) => {
     const matchid = req.params.id;
     const url = `https://www.futbolverileri.com/match-detail/${matchid}/facts`;
         const browser = await puppeteer.launch({
             args: [
                 '--no-sandbox',
-                '--disable-setuid-sandbox',
               ],
               headless: false
         });
