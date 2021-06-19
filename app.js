@@ -269,6 +269,7 @@ app.get('/matchDetails/:id', async (req,res) => {
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
               ],
+              headless: false
         });
         const page = await browser.newPage();
         await page.goto(url, {
