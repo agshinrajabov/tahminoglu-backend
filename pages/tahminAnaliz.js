@@ -2,7 +2,7 @@ module.exports = function(app) {
     let request = require('request-promise');
     const cookieJar = request.jar();
     request = request.defaults({jar: cookieJar});
-    const $ = require('cheerio');
+    const cheerio = require('cheerio');
 
     function lastElement(array) {
         return array.slice(0,array.length-4);
@@ -17,10 +17,10 @@ module.exports = function(app) {
 
 
 
-        getRequest(sample, (html, next) => {
+        getRequest(sample, (html, _) => {
             try {
-                
-                const tables = $('.injurytable', html);
+                const $ = cheerio.load(html)
+                const tables = $('.injurytable');
                 var api = [];
                 for(var i = 0; i < tables.length; i++) {
                     var tbody = $('tbody', tables[i]).children();

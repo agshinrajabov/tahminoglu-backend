@@ -2,7 +2,7 @@ module.exports = function(app) {
     let request = require('request-promise');
     const cookieJar = request.jar();
     request = request.defaults({jar: cookieJar});
-    const $ = require('cheerio');
+    const cheerio = require('cheerio');
 
     const sample = "https://www.tahminanaliz.com/orani-dusen-maclar/";
 
@@ -52,10 +52,11 @@ module.exports = function(app) {
 
 
     app.get('/oranidusenler', (req,res) => {
-        getRequest(sample, (html, next) => {
+        getRequest(sample, (html, _) => {
             try {
-                
-                const rows = $('.post-single-content tbody', html).eq(0).children();
+                const $ = cheerio.load(html);
+
+                const rows = $('.post-single-content tbody').eq(0).children();
                 console.log(rows.length);
                 var api = [];
 

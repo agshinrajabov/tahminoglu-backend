@@ -2,15 +2,15 @@ module.exports = function(app) {
     let request = require('request-promise');
     const cookieJar = request.jar();
     request = request.defaults({jar: cookieJar});
-    const $ = require('cheerio');
+    const cheerio = require('cheerio');
 
     const sample = "https://www.tahminanaliz.com/avrupa-top-10/";
 
     app.get('/avrupadatop10', (req,res) => {
         getRequest(sample, (html, next) => {
             try {
-                
-                const rows = $('.brs_col table tbody', html).children();
+                const $ = cheerio.load(html);
+                const rows = $('.brs_col table tbody').children();
                 var api = [];
                     for(var j = 1; j < rows.length; j++) {
                         var tr = $(rows.eq(j));
