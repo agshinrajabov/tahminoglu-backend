@@ -265,7 +265,12 @@ app.get('/link', function (_, res) {
 app.get('/matchDetails/:id', async (req,res) => {
     const matchid = req.params.id;
     const url = `https://www.futbolverileri.com/match-detail/${matchid}/facts`;
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+              ],
+        });
         const page = await browser.newPage();
         await page.goto(url, {
           waitUntil: 'networkidle2',
