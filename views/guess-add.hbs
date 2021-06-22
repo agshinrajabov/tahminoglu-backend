@@ -117,7 +117,6 @@
                                         </label class="check">
                                     </div>
                                 </div>
-T
                                 <div class="input-group">
                                     <div class="input-label">
                                         <label for="">Oyun tarixi
@@ -157,8 +156,31 @@ T
                                         </label>
                                     </div>
                                     <div class="input-label">
-                                        <label for=""> Bildirim göndərilsin?
-                                        <input type="checkbox" class="cbox" name="isNotification" placeholder="" value="true">
+                                        <label for="">Lig adı
+                                            <input type="text" name="gameLeague" placeholder="Turkey Super League"
+                                                value="{{data.gameLeague}}" required>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-label">
+                                        <label for="">Canlı maç Dəqiqə
+                                            <input type="number" name="gameLiveMinute" placeholder="Neçənci dəqiqə"
+                                                value="{{data.gameLiveMinute}}">
+                                        </label>
+                                    </div>
+                                </div>
+                                 <div class="input-group">
+                                    <div class="input-label">
+                                        <label for="">Önemli Maç Bilgileri
+                                            <input type="number" name="gameInformations" placeholder="https://www.futbolverileri.com/match-detail/26877032/facts"
+                                                value="{{data.gameInformations}}">
+                                        </label>
+                                    </div>
+                                    <div class="input-label">
+                                        <label for="">Maç özeti
+                                            <input type="text" name="gameVideo" placeholder="Youtube linki"
+                                                value="{{data.gameVideo}}">
                                         </label>
                                     </div>
                                 </div>
