@@ -10,6 +10,7 @@ var oraniDusenler    = require('./pages/oraniDusenler');
 var avrupadaTop10    = require('./pages/avrupadaTop10');
 var session          = require('express-session');
 var Guess            = require('./pages/add_guess/guess-add.js');
+var SocialMedia            = require('./pages/add_guess/socialMediaModel');
 var History          = require('./pages/history.js');
 var Register          = require('./pages/auth/register');
 var compression      = require('compression');
@@ -117,6 +118,7 @@ app.get('/guess-add', MatchSessionChecker, function (_, res) {
     res.render('guess-add');
 });
 
+
 app.post('/guess-add', async function (req, res) {
    var newGuess = new Guess({
         homeTeam       : req.body.homeTeam,
@@ -145,6 +147,41 @@ app.post('/guess-add', async function (req, res) {
         }
     }) 
 });
+
+app.get('/socials',MatchSessionChecker, function (_, res) {
+    res.render('notification');
+});
+
+app.get('/social', function (_, res) {
+    SocialMedia.find({}, null, {sort: {updatedDate: -1}}, (err,data) => {
+        if(err) {
+            throw err;
+        }
+        res.json(data);
+    })
+});
+
+
+
+app.post('/socials', MatchSessionChecker, async function (req, res) {
+    var newSocialMedia = new SocialMedia({
+         facebook       : req.body.facebook,
+         instagram      : req.body.instagram,
+         telegram       : req.body.telegram,
+         blog     : req.body.blog,
+         pinterest       : req.body.pinterest,
+     });
+     newSocialMedia.save(async (err) => {
+         if(!err) {
+             return res.redirect('/socials');
+         } else {
+             console.log(err);
+             res.render('guess-add');
+         }
+     }) 
+ });
+
+
 
 app.get('/guess/delete/:id', MatchSessionChecker, function(req,res) {
     const id = req.params.id

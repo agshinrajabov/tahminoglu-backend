@@ -21,7 +21,7 @@
                         <a href="/home">Ana səhifə</a>
                     </li>
                     <li class="active">
-                        <a href="/notification">Bildirişlər</a>
+                        <a href="/socials">Sosial Media Hesabları</a>
                     </li>
                     <li>
                         <a href="/guess">Təxminlər</a>
@@ -32,29 +32,37 @@
         <section>
             <div class="container2">
                 <div class="welcome">
-                    Bildirişlər
+                    Hesablar
                 </div>
                 <div class="post-content">
                     <div class="post-content-title">
-                        Bildirişlərinizi buradan göndərə bilərsiniz.
+                        Sosyal medya hesablarının linklərini dəyişdirə bilərsən
                     </div>
                 </div>
 
                 <div class="notification">
                     <div class="notification-title">
-                        Bildiriş göndər
+                        Hesablar
                     </div>
 
                     <div class="notification-form">
-                        <form action="/notification" method="POST">
-                            <label for="notTitle">Bildiriş başlığı
-                                <input required name="not_Title" id="notTitle" type="text" minlength="6" maxlength="25" placeholder="Başlıq">
+                        <form action="/socials" method="POST">
+                            <label for="notTitle">Facebook
+                                <input required name="facebook" id="notTitle" type="text" minlength="6" maxlength="25" value="{{facebook}}" placeholder="http://">
                             </label>
-
-                            <label for="notText">Bildiriş mətni
-                                <textarea required name="not_Text" id="notText" cols="45" rows="7"></textarea>
+                             <label for="notTitle">Instagram
+                                <input required name="instagram" id="notTitle" type="text" minlength="6" maxlength="25"  value="{{instagram}}" placeholder="http://">
                             </label>
-                            <input type="submit" value="Göndər">
+                             <label for="notTitle">Telegram
+                                <input required name="telegram" id="notTitle" type="text" minlength="6" maxlength="25"  value="{{telegram}}" placeholder="http://">
+                            </label>
+                             <label for="notTitle">Blog
+                                <input required name="blog" id="notTitle" type="text" minlength="6" maxlength="25"  value="{{blog}}" placeholder="http://">
+                            </label>
+                             <label for="notTitle">Pinterest
+                                <input required name="pinterest" id="notTitle" type="text" minlength="6" maxlength="25" value="{{pinterest}}"  placeholder="http://">
+                            </label>
+                            <input type="submit" value="Yenilə">
                         </form>
                     </div>
                 </div>
