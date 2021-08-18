@@ -319,35 +319,69 @@ app.get('/daily/:date', (req, res) => {
 
 });
 
-app.get('/matchDetails/:id', async (req,res) => {
-    const matchid = req.params.id;
-    const url = `https://www.futbolverileri.com/match-detail/${matchid}/facts`;
-        const browser = await puppeteer.launch({
-            args: [
-                '--no-sandbox',
-              ],
-              headless: true
+app.post('/matchDetails', async (req,res) => {
+
+    let {link} = req.body;
+
+    getRequest(link, (html) => {
+        
+
+        const $ = cheerio.load(html);
+
+        const api = [];
+
+        $('.resume').each(function(i, item) {
+          var imageHtml = $(item).eq(0);
+          var img = imageHtml.text().toString().trim();
+         if(img != "" && img != null) {
+             api.push(img);
+         }
         });
-        const page = await browser.newPage();
-        await page.goto(url, {
-          waitUntil: 'networkidle2',
-        });
+        res.json(api);
+    });
+        // const browser = await puppeteer.launch({
+        //     args: [
+        //         '--no-sandbox',
+        //       ],
+        //       headless: true
+        // });
+        // const page = await browser.newPage();
+        // await page.goto(url, {
+        //   waitUntil: 'networkidle2',
+        // });
 
-        const content = await page.content();
+        // const content = await page.content();
 
-        const matchDetailsApi = [];
+        // const matchDetailsApi = [];
 
-        const $ = cheerio.load(content);
+        // const $ = cheerio.load(content);
+
+        // res.send(content);
 
 
-        $('.fact_row').each(function(_, item) {
-            var txt = $('div', item).eq(1).text().trim();
-            matchDetailsApi.push(txt);
-        });
+        // const api = [];
 
-        res.json(matchDetailsApi);
+        // $('.resume').each(function(i, item) {
+        //   var imageHtml = $('.factText', item).eq(0);
+        //   var img = imageHtml.text().toString();
+        //   console.log(img);
+        // //   var haberImage = $('img', img).attr('src').trim();
+        // //   var haberTitle = $('.widget-article__teaser', item).eq(0).text();
+        // //   var haberLink = $('a.widget-article__link', item).eq(0).attr('href');         
+        // //   var haberTarih = $('.widget-article__published-time', item).eq(0).attr('datetime');         
+        // //  var haber = {
+        // //      title: haberTitle.trim(),
+        // //      link: haberLink,
+        // //      image: haberImage,
+        // //      date: haberTarih
+        // //  };
+
+        // //  api.push(haber);
+        // });
+
+        // res.json(matchDetailsApi);
       
-        await browser.close();
+        // await browser.close();
 });
 
 app.get('/matchTrade/:id', async (req,res) => {
